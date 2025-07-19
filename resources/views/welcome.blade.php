@@ -94,10 +94,10 @@
         <div class="swiper-wrapper">
           <!-- Slide -->
           <div class="swiper-slide">
-            <img src="/img/Flor1.jpg" alt="Flor 1" class="w-full h-full object-cover rounded-md">
+            <img src="public/img/Flor1.jpg" alt="Flor 1" class="w-full h-full object-cover rounded-md">
           </div>
           <div class="swiper-slide">
-            <img src="/img/Flor2.jpg" alt="Flor 2" class="w-full h-full object-cover rounded-md">
+            <img src="public/img/Flor2.jpg" alt="Flor 2" class="w-full h-full object-cover rounded-md">
           </div>
           <div class="swiper-slide">
             <img src="/img/Flor3.jpg" alt="Flor 3" class="w-full h-full object-cover rounded-md">

@@ -6,7 +6,8 @@
   <title>Florería SAC</title>
   <link rel="preconnect" href="https://fonts.bunny.net">
   <link href="https://fonts.bunny.net/css?family=instrument-sans:400,500,600" rel="stylesheet" />
-  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
         @vite(['resources/css/app.css', 'resources/js/app.js'])
         <style>
         .poppins-bold {
@@ -79,52 +80,161 @@
 
 <section class="bg-gray-800">
   <div class="container mx-auto px-6 py-16 lg:flex lg:items-center lg:gap-12">
-    <!-- Texto -->
-    <div class="lg:w-1/2 text-white space-y-6">
-      <h1 class="text-4xl font-bold">Bienvenido a Nuestra Florería</h1>
-      <p class="text-lg text-gray-300">Elige entre una variedad de flores frescas y hermosas.</p>
+    {{-- Texto --}}
+    <div class="lg:w-1/2">
+      <h1 class="text-4xl font-bold text-white">Bienvenido a Nuestra Florería</h1>
+      <p class="mt-4 text-gray-300">Elige entre una variedad de flores frescas y hermosas.</p>
       <a href="{{ url('/catalogo') }}"
-         class="inline-block px-6 py-3 bg-black text-white rounded-lg hover:bg-gray-900 transition">
+         class="inline-block mt-6 bg-black text-white py-3 px-6 rounded-lg hover:bg-gray-900">
         Ver Catálogo
       </a>
     </div>
-    <!-- Carrusel -->
+
+    {{-- Slider --}}
     <div class="lg:w-1/2 mt-10 lg:mt-0 relative overflow-hidden px-4 md:px-0">
-      <div class="swiper-container w-full h-80">
+      <div class="swiper-container w-full h-80 rounded-lg">
         <div class="swiper-wrapper">
-          <!-- Slide -->
           <div class="swiper-slide">
-            <img src="public/img/Flor1.jpg" alt="Flor 1" class="w-full h-full object-cover rounded-md">
+            <img src="{{ asset('img/Flor1.png') }}" alt="Flor 1"
+                 class="w-full h-full object-cover rounded-lg">
           </div>
           <div class="swiper-slide">
-            <img src="public/img/Flor2.jpg" alt="Flor 2" class="w-full h-full object-cover rounded-md">
+            <img src="{{ asset('img/Flor2.jpg') }}" alt="Flor 2"
+                 class="w-full h-full object-cover rounded-lg">
           </div>
           <div class="swiper-slide">
-            <img src="/img/Flor3.jpg" alt="Flor 3" class="w-full h-full object-cover rounded-md">
+            <img src="{{ asset('img/Flor3.jpg') }}" alt="Flor 3"
+                 class="w-full h-full object-cover rounded-lg">
           </div>
-          <div class="swiper-slide">
-            <img src="/img/Flor4.jpg" alt="Flor 4" class="w-full h-full object-cover rounded-md">
-          </div>
-          <!-- Más slides… -->
         </div>
+
+        {{-- Flechas (ocultas en móviles) --}}
+        <div class="swiper-button-prev hidden md:flex absolute inset-y-1/2 left-4 transform -translate-y-1/2 z-10 text-white text-4xl bg-black/40 hover:bg-black/70 rounded-full w-16 h-16 items-center justify-center cursor-pointer">
+        </div>
+        <div class="swiper-button-next hidden md:flex absolute inset-y-1/2 right-4 transform -translate-y-1/2 z-10 text-white text-2xl bg-black/40 hover:bg-black/70 rounded-full w-12 h-12 items-center justify-center cursor-pointer">
+        </div>
+
+        {{-- Paginación centrada --}}
+        <div class="swiper-pagination absolute bottom-4 inset-x-0 flex justify-center space-x-2 z-10"></div>
       </div>
-      <!-- Flechas -->
-      <button class="swiper-button-prev absolute inset-y-1/2 left-4 transform -translate-y-1/2 z-10 text-white text-3xl bg-black/40 hover:bg-black/70 rounded-full w-10 h-10 flex items-center justify-center focus:outline-none">&#8249;</button>
-      <button class="swiper-button-next absolute inset-y-1/2 right-4 transform -translate-y-1/2 z-10 text-white text-3xl bg-black/40 hover:bg-black/70 rounded-full w-10 h-10 flex items-center justify-center focus:outline-none">&#8250;</button>
-      <!-- Paginación -->
-      <div class="swiper-pagination absolute bottom-4 left-1/2 transform -translate-x-1/2 z-10"></div>
-      <script>
-        document.addEventListener('DOMContentLoaded', () => {
-          new Swiper('.swiper-container', {
-            loop: true,
-            pagination: { el: '.swiper-pagination', clickable: true },
-            navigation: {
-              nextEl: '.swiper-button-next',
-              prevEl: '.swiper-button-prev',
-            },
-          });
-        });
-      </script>
+    </div>
+  </div>
+
+  {{-- Estilos extra para bullets --}}
+  <style>
+  .swiper-button-prev,
+  .swiper-button-next {
+    @apply w-16 h-16;
+  }
+  .swiper-button-prev::after,
+  .swiper-button-next::after {
+    font-size: 1.75rem;
+  }
+  .swiper-pagination-bullet {
+    @apply bg-white/50;
+  }
+  .swiper-pagination-bullet-active {
+    @apply bg-white;
+  }
+</style>
+</section>
+
+{{-- JS de Swiper --}}
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    new Swiper('.swiper-container', {
+      loop: true,
+      speed: 800,
+      autoplay: {
+        delay: 3000,
+        disableOnInteraction: false,
+      },
+      effect: 'fade',
+      fadeEffect: { crossFade: true },
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+    });
+  });
+</script>
+{{-- En welcome.blade.php (o donde montes el home) --}}
+<section class="py-16 bg-white">
+  <div class="container mx-auto px-6">
+    <!-- Título -->
+    <h2 class="text-3xl font-bold text-center mb-12">
+      Productos Destacados
+    </h2>
+
+    <!-- Swiper -->
+    <div class="relative">
+      <div class="swiper featured-swiper">
+        <div class="swiper-wrapper">
+          @foreach($featured as $product)
+            <div class="swiper-slide px-2">
+              <div class="bg-white rounded-lg overflow-hidden shadow hover:shadow-lg transition">
+                <div class="relative">
+                  <img
+                    src="{{ asset($product['image']) }}"
+                    alt="{{ $product['name'] }}"
+                    class="w-full h-64 object-cover"
+                  >
+                  @if(!empty($product['label']))
+                    <span class="absolute top-2 left-2 bg-gray-100 text-gray-800 text-xs font-semibold px-2 py-1 rounded">
+                      {{ $product['label'] }}
+                    </span>
+                  @endif
+                  <h3 class="absolute inset-0 flex items-center justify-center text-white text-xl font-bold bg-black bg-opacity-30">
+                    {{ $product['name'] }}
+                  </h3>
+                </div>
+                <div class="p-4">
+                  <p class="text-gray-900 font-medium">{{ $product['name'] }}</p>
+                  <p class="mt-2 text-gray-800 text-lg font-semibold">{{ $product['price'] }}</p>
+                </div>
+              </div>
+            </div>
+          @endforeach
+        </div>
+
+        <!-- Botones -->
+        <div class="swiper-button-prev text-2xl text-gray-800 hover:text-black"></div>
+        <div class="swiper-button-next text-2xl text-gray-800 hover:text-black"></div>
+
+        <!-- Paginación bullets -->
+        <div class="swiper-pagination mt-6"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{{-- Inicialización de Swiper --}}
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    new Swiper('.featured-swiper', {
+      loop: true,
+      speed: 600,
+      slidesPerView: 1,
+      spaceBetween: 20,
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+      breakpoints: {
+        640: { slidesPerView: 2 },
+        1024: { slidesPerView: 3 },
+      },
+    });
+  });
+</script>
     </div>
   </div>
 </section>

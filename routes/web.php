@@ -1,13 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
-Route::get('/', function () {
-    return view('welcome');
-});
-
 use App\Http\Controllers\HomeController;
 
+// Página de inicio (productos destacados)
 Route::get('/', [HomeController::class, 'index']);
 
-
+// Página de detalle de producto
+Route::get('/producto/{slug}', [HomeController::class, 'showProduct']);

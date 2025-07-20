@@ -7,9 +7,34 @@
   <link rel="preconnect" href="https://fonts.bunny.net">
   <link href="https://fonts.bunny.net/css?family=instrument-sans:400,500,600" rel="stylesheet" />
   <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Open+Sans&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+
+
   <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
         @vite(['resources/css/app.css', 'resources/js/app.js'])
         <style>
+        @font-face {
+      font-family: 'Libre Baskerville';
+      font-style: italic;
+      font-weight: 100;
+      font-display: swap;
+      src: url(https://fonts.gstatic.com/s/librebaskerville/v16/kmKhZrc3Hgbbcjq75U4uslyuy4kn0qNcWx8QDP2V.woff2) format('woff2');
+      unicode-range: U+0100-02BA, U+02BD-02C5; /* truncado por brevedad */
+    }
+
+    @font-face {
+      font-family: 'Libre Baskerville';
+      font-style: normal;
+      font-weight: 100;
+      font-display: swap;
+      src: url(https://fonts.gstatic.com/s/librebaskerville/v16/kmKnZrc3Hgbbcjq75U4uslyuy4kn0qNZaxM.woff2) format('woff2');
+      unicode-range: U+0000-00FF; /* truncado */
+    }
+
+    .font-libre {
+      font-family: 'Libre Baskerville', serif;
+    }
         .poppins-bold {
         font-family: "Poppins", sans-serif;
         font-style: normal;
@@ -25,44 +50,47 @@
 </head>
 <body class="bg-white">
   <!-- HEADER -->
-  <header class="bg-white shadow-sm">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex items-center justify-between h-16">
-        <!-- Logo -->
-        <a href="{{ url('/') }}" class="flex items-center space-x-2">
-          <div class="w-8 h-8 bg-gray-200 rounded-full"></div>
-          <span class="text-xl font-semibold text-gray-900">Florería</span>
-        </a>
-        <!-- Navegación -->
-        <nav class="flex items-center font-semibold gap-20">
-          <div class="flex gap-16">
-            <a href="{{ url('/') }}" class="text-gray-700 hover:text-gray-900">Inicio</a>
-            <a href="{{ url('/catalogo') }}" class="text-gray-700 hover:text-gray-900">Catálogo</a>
-            <a href="{{ url('/contacto') }}" class="text-gray-700 hover:text-gray-900">Contacto</a>
-            <a href="{{ url('/sobre-nosotros') }}" class="text-gray-700 hover:text-gray-900">Sobre Nosotros</a>
-          </div>
-          <div class="flex gap-16">
-            <a href="{{ url('/carrito') }}" class="text-gray-700 hover:text-gray-900">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
-                   viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                      d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2 9m5-9v9m4-9v9m4-9l2 9"/>
-              </svg>
-            </a>
-            <a href="{{ url('/perfil') }}" class="text-gray-700 hover:text-gray-900">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
-                   viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                      d="M5.121 17.804A9 9 0 1118.879 6.196 9 9 0 015.12 17.804z"/>
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                      d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
-              </svg>
-            </a>
-          </div>
-        </nav>
-      </div>
+  <header class="bg-white shadow-md">
+  <div class="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-16">
+      
+      <!-- Logo -->
+      <a href="{{ url('/') }}" class="flex items-center space-x-2">
+        <div class="w-8 h-8 bg-black rounded-full "></div>
+        <span class=" text-black font-['Libre_Baskerville'] hover:text-[#D4AF37] transition">Florería</span>
+      </a>
+
+      <!-- Navegación -->
+      <nav class="flex items-center gap-16  font-normal">
+        <div class="flex gap-12 text-xs	">
+          <a href="{{ url('/') }}" class="text-black hover:text-[#D4AF37] uppercase tracking-wide font-['Libre_Baskerville'] transition">Inicio</a>
+          <a href="{{ url('/catalogo') }}" class="text-black hover:text-[#D4AF37] uppercase tracking-wide font-['Libre_Baskerville'] transition">Catálogo</a>
+          <a href="{{ url('/contacto') }}" class="text-black hover:text-[#D4AF37] uppercase tracking-wide font-['Libre_Baskerville'] transition">Contacto</a>
+          <a href="{{ url('/sobre-nosotros') }}" class="text-black hover:text-[#D4AF37] uppercase tracking-wide font-['Libre_Baskerville'] transition">Sobre Nosotros</a>
+        </div>
+
+        <!-- Iconos -->
+        <div class="flex gap-10">
+          <a href="{{ url('/carrito') }}" class="text-black hover:text-[#D4AF37] transition">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2 9m5-9v9m4-9v9m4-9l2 9"/>
+            </svg>
+          </a>
+          <a href="{{ url('/perfil') }}" class="text-black hover:text-[#D4AF37] transition">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M5.121 17.804A9 9 0 1118.879 6.196 9 9 0 015.12 17.804z"/>
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+            </svg>
+          </a>
+        </div>
+      </nav>
     </div>
-  </header>
+  </div>
+</header>
+
 
 {{-- Copilot: Genera una sección Hero responsive con Tailwind CSS
      - Fondo gris oscuro (ej: bg-gray-700)
@@ -80,93 +108,48 @@
 
 <section class="bg-gray-800">
   <div class="container mx-auto px-6 py-16 lg:flex lg:items-center lg:gap-12">
+    
     {{-- Texto --}}
     <div class="lg:w-1/2">
-      <h1 class="text-4xl font-bold text-white">Bienvenido a Nuestra Florería</h1>
-      <p class="mt-4 text-gray-300">Elige entre una variedad de flores frescas y hermosas.</p>
+      <h1 class="text-white font-semibold uppercase tracking-wide font-['Libre_Baskerville']">Bienvenido a Nuestra Florería</h1>
+      <p class="mt-6 text-gray-300 tracking-wide font-['Libre_Baskerville']">Elige entre una variedad de flores frescas y hermosas.</p>
       <a href="{{ url('/catalogo') }}"
-         class="inline-block mt-6 bg-black text-white py-3 px-6 rounded-lg hover:bg-gray-900">
+         class="inline-block mt-15 bg-black text-white py-3 px-6 rounded-lg hover:bg-gray-900 transition duration-300 font-['Libre_Baskerville']">
         Ver Catálogo
       </a>
     </div>
 
-    {{-- Slider --}}
-    <div class="lg:w-1/2 mt-10 lg:mt-0 relative overflow-hidden px-4 md:px-0">
-      <div class="swiper-container w-full h-80 rounded-lg">
-        <div class="swiper-wrapper">
-          <div class="swiper-slide">
-            <img src="{{ asset('img/Flor1.png') }}" alt="Flor 1"
-                 class="w-full h-full object-cover rounded-lg">
-          </div>
-          <div class="swiper-slide">
-            <img src="{{ asset('img/Flor2.jpg') }}" alt="Flor 2"
-                 class="w-full h-full object-cover rounded-lg">
-          </div>
-          <div class="swiper-slide">
-            <img src="{{ asset('img/Flor3.jpg') }}" alt="Flor 3"
-                 class="w-full h-full object-cover rounded-lg">
-          </div>
-        </div>
+    {{-- Slider con efecto de fade --}}
+    {{-- Slider 1 con efecto de fade --}}
+<div class="lg:w-1/2 mt-10 lg:mt-0 relative overflow-hidden px-4 md:px-0">
+  <div class="relative w-full h-80 rounded-3xl overflow-hidden shadow-lg">
+    <div id="fade-slider" class="relative w-full h-full">
+      <img src="{{ asset('img/Flor1.png') }}" class="fade-slide absolute inset-0 w-full h-full object-cover rounded-3xl opacity-100 transition-opacity duration-1000" alt="Flor 1">
+      <img src="{{ asset('img/Flor2.jpg') }}" class="fade-slide absolute inset-0 w-full h-full object-cover rounded-3xl opacity-0 transition-opacity duration-1000" alt="Flor 2">
+      <img src="{{ asset('img/Flor3.jpg') }}" class="fade-slide absolute inset-0 w-full h-full object-cover rounded-3xl opacity-0 transition-opacity duration-1000" alt="Flor 3">
+    </div>
 
-        {{-- Flechas (ocultas en móviles) --}}
-        <div class="swiper-button-prev hidden md:flex absolute inset-y-1/2 left-4 transform -translate-y-1/2 z-10 text-white text-4xl bg-black/40 hover:bg-black/70 rounded-full w-16 h-16 items-center justify-center cursor-pointer">
-        </div>
-        <div class="swiper-button-next hidden md:flex absolute inset-y-1/2 right-4 transform -translate-y-1/2 z-10 text-white text-2xl bg-black/40 hover:bg-black/70 rounded-full w-12 h-12 items-center justify-center cursor-pointer">
-        </div>
-
-        {{-- Paginación centrada --}}
-        <div class="swiper-pagination absolute bottom-4 inset-x-0 flex justify-center space-x-2 z-10"></div>
-      </div>
+    {{-- Bullets --}}
+    <div class="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-3 z-10">
+      <button onclick="goToFadeSlide(0)" class="w-3 h-3 rounded-full bg-white/50 hover:bg-white transition"></button>
+      <button onclick="goToFadeSlide(1)" class="w-3 h-3 rounded-full bg-white/50 hover:bg-white transition"></button>
+      <button onclick="goToFadeSlide(2)" class="w-3 h-3 rounded-full bg-white/50 hover:bg-white transition"></button>
     </div>
   </div>
+</div>
 
-  {{-- Estilos extra para bullets --}}
-  <style>
-  .swiper-button-prev,
-  .swiper-button-next {
-    @apply w-16 h-16;
-  }
-  .swiper-button-prev::after,
-  .swiper-button-next::after {
-    font-size: 1.75rem;
-  }
-  .swiper-pagination-bullet {
-    @apply bg-white/50;
-  }
-  .swiper-pagination-bullet-active {
-    @apply bg-white;
-  }
-</style>
+ 
 </section>
 
+
+
 {{-- JS de Swiper --}}
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    new Swiper('.swiper-container', {
-      loop: true,
-      speed: 800,
-      autoplay: {
-        delay: 3000,
-        disableOnInteraction: false,
-      },
-      effect: 'fade',
-      fadeEffect: { crossFade: true },
-      pagination: {
-        el: '.swiper-pagination',
-        clickable: true,
-      },
-      navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
-      },
-    });
-  });
-</script>
+
 {{-- En welcome.blade.php (o donde montes el home) --}}
 <section class="py-16 bg-white">
   <div class="container mx-auto px-6">
     <!-- Título -->
-    <h2 class="text-3xl font-bold text-center mb-12">
+    <h2 class="text-3xl font-bold text-center mb-12 uppercase tracking-wide font-['Libre_Baskerville']">
       Productos Destacados
     </h2>
 
@@ -175,30 +158,38 @@
       <div class="swiper featured-swiper">
         <div class="swiper-wrapper">
           @foreach($featured as $product)
-            <div class="swiper-slide px-2">
-              <div class="bg-white rounded-lg overflow-hidden shadow hover:shadow-lg transition">
-                <div class="relative">
-                  <img
-                    src="{{ asset($product['image']) }}"
-                    alt="{{ $product['name'] }}"
-                    class="w-full h-64 object-cover"
-                  >
-                  @if(!empty($product['label']))
-                    <span class="absolute top-2 left-2 bg-gray-100 text-gray-800 text-xs font-semibold px-2 py-1 rounded">
-                      {{ $product['label'] }}
-                    </span>
-                  @endif
-                  <h3 class="absolute inset-0 flex items-center justify-center text-white text-xl font-bold bg-black bg-opacity-30">
-                    {{ $product['name'] }}
-                  </h3>
-                </div>
-                <div class="p-4">
-                  <p class="text-gray-900 font-medium">{{ $product['name'] }}</p>
-                  <p class="mt-2 text-gray-800 text-lg font-semibold">{{ $product['price'] }}</p>
-                </div>
-              </div>
-            </div>
-          @endforeach
+  <div class="swiper-slide px-2">
+    <a href="{{ url('/producto/' . $product['slug']) }}" class="block group">
+      <div class="bg-white rounded-lg overflow-hidden shadow hover:shadow-lg transition font-['Libre_Baskerville']">
+
+        {{-- Imagen con capa opcional encima (overlay) --}}
+        <div class="relative w-full h-64">
+          <img
+            src="{{ asset($product['image']) }}"
+            alt="{{ $product['name'] }}"
+            class="absolute inset-0 w-full h-full object-cover"
+          >
+
+          {{-- Etiqueta como "Nuevo" --}}
+          @if(!empty($product['label']))
+            <span class="absolute top-2 left-2 bg-gray-100 text-gray-800 text-xs font-semibold px-2 py-1 rounded z-10">
+              {{ $product['label'] }}
+            </span>
+          @endif
+
+          {{-- Overlay con nombre --}}
+          <
+        </div>
+
+        {{-- Info del producto --}}
+        <div class="p-4">
+          <p class="text-gray-900 font-medium">{{ $product['name'] }}</p>
+          <p class="mt-2 text-gray-800 text-sm ">{{ $product['price'] }}</p>
+        </div>
+      </div>
+    </a>
+  </div>
+@endforeach
         </div>
 
         <!-- Botones -->
@@ -238,6 +229,27 @@
     </div>
   </div>
 </section>
+{{-- Slider 2 con efecto de fade --}}
+<section class="bg-white py-12">
+  <div class="max-w-7xl mx-auto">
+    <div class="relative w-full max-w-6xl mx-auto mt-12 rounded-3xl overflow-hidden h-[500px]">
+      <div class="relative w-full h-full overflow-hidden" id="fade-carousel-2">
+        <img src="{{ asset('img/flor1.png') }}" alt="Flor 1" class="fade-slide-2 absolute inset-0 w-full h-full object-cover rounded-[2rem] opacity-100 transition-opacity duration-1000">
+        <img src="{{ asset('img/flor2.jpg') }}" alt="Flor 2" class="fade-slide-2 absolute inset-0 w-full h-full object-cover rounded-[2rem] opacity-0 transition-opacity duration-1000">
+        <img src="{{ asset('img/flor3.jpg') }}" alt="Flor 3" class="fade-slide-2 absolute inset-0 w-full h-full object-cover rounded-[2rem] opacity-0 transition-opacity duration-1000">
+      </div>
+
+      <!-- Botones indicadores -->
+      <div class="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-3 z-10">
+        <button onclick="goToFade2(0)" class="w-3 h-3 rounded-full bg-white/50 hover:bg-white transition"></button>
+        <button onclick="goToFade2(1)" class="w-3 h-3 rounded-full bg-white/50 hover:bg-white transition"></button>
+        <button onclick="goToFade2(2)" class="w-3 h-3 rounded-full bg-white/50 hover:bg-white transition"></button>
+      </div>
+    </div>
+  </div>
+</section>
+
+
 
   <!-- CONTENIDO -->
   <main>

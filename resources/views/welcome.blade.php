@@ -372,7 +372,150 @@
     </div>
   </form>
 </section>
-<hr class="border-t border-gray-100 my-4">
+<section id="Reseñas" class="py-16 bg-[#D9D9D9]">
+  <div class="w-full px-4">
+    <h2 class="text-3xl md:text-3xl text-center text-gray-800 font-['Libre_Baskerville'] mb-10">
+      Opiniones de Clientes
+    </h2>
+
+    <div class="swiper reviews-swiper overflow-hidden relative">
+      <div class="swiper-wrapper">
+        <!-- Testimonio 1 -->
+        <div class="swiper-slide flex justify-center">
+          <div class="testimonial-card bg-white rounded-xl shadow-md p-6 w-full max-w-md text-center transition-all duration-500">
+            <p class="text-gray-700 mb-6 font-['Libre_Baskerville']">
+              ★★★★★<br>
+              Todo estuvo perfecto, la atención sin problemas y bastante rápida.
+            </p>
+            <p class="font-semibold text-gray-900">L. Gamonal</p>
+            <p class="text-sm text-gray-500">Hace 1 año</p>
+          </div>
+        </div>
+
+        <!-- Testimonio 2 -->
+        <div class="swiper-slide flex justify-center">
+          <div class="testimonial-card bg-white rounded-xl shadow-md p-6 w-full max-w-md text-center transition-all duration-500">
+            <p class="text-gray-700 mb-6 font-['Libre_Baskerville']">
+              ★★★★★<br>
+              Me encantan sus arreglos. Románticos y modernos con full detalles.
+            </p>
+            <p class="font-semibold text-gray-900">J. Prado</p>
+            <p class="text-sm text-gray-500">Hace 6 meses</p>
+          </div>
+        </div>
+
+        <!-- Testimonio 3 -->
+        <div class="swiper-slide flex justify-center">
+          <div class="testimonial-card bg-white rounded-xl shadow-md p-6 w-full max-w-md text-center transition-all duration-500">
+            <p class="text-gray-700 mb-6 font-['Libre_Baskerville']">
+              ★★★★★<br>
+              Muy buen servicio y arreglos de buena calidad. ¡A mi esposa le encantó!
+            </p>
+            <p class="font-semibold text-gray-900">J. Ravelo</p>
+            <p class="text-sm text-gray-500">Hace 6 meses</p>
+          </div>
+        </div>
+      </div>
+      <div class="swiper-pagination"></div>
+    </div>
+  </div>
+</section>
+
+<!-- Swiper & efecto de ampliación con JS -->
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const swiper = new Swiper('.reviews-swiper', {
+      loop: true,
+      slidesPerView: 1,
+      spaceBetween: 20,
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+      autoplay: {
+        delay: 5000,
+        disableOnInteraction: false,
+      },
+      breakpoints: {
+        768: { slidesPerView: 2 },
+        1024: { slidesPerView: 3 },
+      },
+      on: {
+        slideChangeTransitionEnd: function () {
+          document.querySelectorAll('.testimonial-card').forEach(card => {
+            card.classList.remove('is-active');
+          });
+
+          // activa solo la tarjeta actual
+          const activeSlide = swiper.slides[swiper.activeIndex];
+          if (activeSlide) {
+            const activeCard = activeSlide.querySelector('.testimonial-card');
+            if (activeCard) activeCard.classList.add('is-active');
+          }
+        },
+        init: function () {
+          const activeCard = this.slides[this.activeIndex].querySelector('.testimonial-card');
+          if (activeCard) activeCard.classList.add('is-active');
+        }
+      }
+    });
+  });
+</script>
+
+<!-- Estilo para la clase activa -->
+<style>
+  .testimonial-card {
+    transform: scale(1);
+  }
+
+  .testimonial-card.is-active {
+    transform: scale(1);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    z-index: 100;
+  }
+   .swiper-pagination {
+    margin-top: 10rem; /* mt-10 equivalente */
+  }
+
+  .swiper-pagination-bullet {
+    background-color: #000 !important;
+    opacity: 0.4;
+    transition: transform 0.3s ease;
+  }
+
+  .swiper-pagination-bullet-active {
+    background-color: #000 !important;
+    opacity: 1;
+    transform: scale(1.2);
+  }
+</style>
+
+
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    new Swiper('.reviews-swiper', {
+      loop: true,
+      slidesPerView: 1,
+      spaceBetween: 20,
+      autoplay: {
+        delay: 5000,
+        disableOnInteraction: false,
+      },
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+      breakpoints: {
+        768: { slidesPerView: 2 },
+        1024: { slidesPerView: 3 },
+      },
+    });
+  });
+</script>
+
+
+<hr class="border-t border-gray-100 my-20">
 <footer class="bg-white text-black font-['Libre_Baskerville'] px-6 py-12">
   <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-10 text-sm">
     
@@ -421,7 +564,7 @@
   </div>
 
   <div class="text-center mt-12 text-xs">
-    © 2025 Florería La Botánika Perú - Todos los derechos reservados.
+    © 2025 Jose Ayrton Calderon Cruces Todos los derechos reservados. Uwu
   </div>
 </footer>
 

@@ -14,6 +14,8 @@ class HomeController extends Controller
             'name'  => 'Ramo de Rosas Rosadas',
             'price' => '30.00',
             'label' => 'Nuevo',
+            'category' => 'rosas',
+            'featured' => true,
         ],
         [
             'slug'  => 'ramo-de-rosas-rojas-clasicas',
@@ -21,6 +23,8 @@ class HomeController extends Controller
             'name'  => 'Ramo de Rosas Rojas Clásicas',
             'price' => '30.00',
             'label' => 'Nuevo',
+            'category' => 'rosas',
+            'featured' => true,
         ],
         [
             'slug'  => 'ramo-de-rosas-coral-en-jarron',
@@ -28,6 +32,8 @@ class HomeController extends Controller
             'name'  => 'Ramo de Rosas Color Coral',
             'price' => '30.00',
             'label' => 'Nuevo',
+            'category' => 'rosas',
+            'featured' => true,
         ],
         [
             'slug'  => 'ramo-mixto-de-rosas-blancas-y-rosadas',
@@ -35,6 +41,8 @@ class HomeController extends Controller
             'name'  => 'Ramo Mixto de Rosas Blancas y Rosadas',
             'price' => '30.00',
             'label' => 'Nuevo',
+            'category' => 'rosas',
+            'featured' => true,
         ],
         [
             'slug'  => 'ramo-de-rosas-rosadas',
@@ -42,21 +50,30 @@ class HomeController extends Controller
             'name'  => 'Ramo de Rosas Rosadas',
             'price' => '30.00',
             'label' => 'Nuevo',
+            'category' => 'rosas',
+            'featured' => true,
         ],
         [
             'slug'  => 'ramo-de-rosas-rojas-clasicas',
-            'image' => 'image/Rosas/Rosa2.jpg',    // rosas rojas intensas en vaso de cristal
+            'image' => 'image/Tulipanes/Tuli1.jpg',    // rosas rojas intensas en vaso de cristal
             'name'  => 'Ramo de Rosas Rojas Clásicas',
             'price' => '30.00',
             'label' => 'Nuevo',
+            'category' => 'tulipanes',
+            'featured' => true,
         ],
     ];
 
     // Página principal con productos destacados
     public function index()
-    {
-        return view('welcome', ['featured' => $this->products]);
-    }
+{
+    $featured = collect($this->products)
+                 ->where('featured', true)
+                 ->values();
+
+    return view('welcome', compact('featured'));
+}
+
 
     // Página individual de cada producto
     public function showProduct($slug)
@@ -67,6 +84,32 @@ class HomeController extends Controller
             abort(404);
         }
 
-        return view('producto', compact('product'));
+        return view('Producto.producto', compact('product'));
     }
+    
+    public function catalogo(Request $request)
+{
+    $categoria = strtolower($request->input('categoria',''));
+    $busqueda  = strtolower($request->input('busqueda',''));
+
+    $productos = collect($this->products)
+        // si hay categoría, filtra exacto por campo category
+        ->when($categoria, fn($col) =>
+            $col->where('category', $categoria)
+        )
+        // si hay texto, filtra que el nombre lo contenga
+        ->when($busqueda, fn($col) =>
+            $col->filter(fn($p) =>
+                str_contains(strtolower($p['name']), $busqueda)
+            )
+        )
+        ->values();
+
+    return view('catalogo.catalogo', [
+        'productos'       => $productos,
+        'categoriaActiva' => $categoria ?: 'Todos',
+        'busquedaActual'  => $busqueda,
+    ]);
+}
+
 }

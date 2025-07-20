@@ -48,31 +48,4 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 
-// ==== Slider 2 ====
-document.addEventListener('DOMContentLoaded', () => {
-  const slides2 = document.querySelectorAll('.fade-slide-2');
-  if (slides2.length > 0) {
-    let currentFade2 = 0;
 
-    function showSlide2(index) {
-      slides2.forEach((img, i) => {
-        img.classList.toggle('opacity-100', i === index);
-        img.classList.toggle('opacity-0', i !== index);
-      });
-    }
-
-    function goToFade2(index) {
-      currentFade2 = index;
-      showSlide2(currentFade2);
-    }
-
-    window.goToFade2 = goToFade2;
-
-    setInterval(() => {
-      currentFade2 = (currentFade2 + 1) % slides2.length;
-      showSlide2(currentFade2);
-    }, 5000);
-
-    showSlide2(0);
-  }
-});

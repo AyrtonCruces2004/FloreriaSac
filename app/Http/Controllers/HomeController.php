@@ -9,25 +9,46 @@ class HomeController extends Controller
     // ✅ Todos los productos en una propiedad privada
     private $products = [
         [
-            'slug'  => 'ramo-de-rosas-rojas',
-            'image' => 'img/Flor1.png',
-            'name'  => 'Ramo de Rosas Rojas',
-            'price' => '$30.00',
+            'slug'  => 'ramo-de-rosas-rosadas',
+            'image' => 'image/Rosas/Rosa1.jpg',    // ramo de rosas rosas claras
+            'name'  => 'Ramo de Rosas Rosadas',
+            'price' => '30.00',
             'label' => 'Nuevo',
         ],
         [
-            'slug'  => 'ramo-de-lirios-blancos',
-            'image' => 'img/Flor2.jpg',
-            'name'  => 'Ramo de Lirios Blancos',
-            'price' => '$25.00',
-            'label' => 'Más Vendido',
+            'slug'  => 'ramo-de-rosas-rojas-clasicas',
+            'image' => 'image/Rosas/Rosa2.jpg',    // rosas rojas intensas en vaso de cristal
+            'name'  => 'Ramo de Rosas Rojas Clásicas',
+            'price' => '30.00',
+            'label' => 'Nuevo',
         ],
         [
-            'slug'  => 'planta-monstera',
-            'image' => 'img/Flor3.jpg',
-            'name'  => 'Planta Monstera',
-            'price' => '$45.00',
-            'label' => 'Exclusivo',
+            'slug'  => 'ramo-de-rosas-coral-en-jarron',
+            'image' => 'image/Rosas/Rosa4.jpg',    // rosas color coral en jarra antigua
+            'name'  => 'Ramo de Rosas Color Coral',
+            'price' => '30.00',
+            'label' => 'Nuevo',
+        ],
+        [
+            'slug'  => 'ramo-mixto-de-rosas-blancas-y-rosadas',
+            'image' => 'image/Rosas/Rosas3.jpg',   // mezcla de rosas blancas y rosadas en jarrón
+            'name'  => 'Ramo Mixto de Rosas Blancas y Rosadas',
+            'price' => '30.00',
+            'label' => 'Nuevo',
+        ],
+        [
+            'slug'  => 'ramo-de-rosas-rosadas',
+            'image' => 'image/Rosas/Rosa1.jpg',    // ramo de rosas rosas claras
+            'name'  => 'Ramo de Rosas Rosadas',
+            'price' => '30.00',
+            'label' => 'Nuevo',
+        ],
+        [
+            'slug'  => 'ramo-de-rosas-rojas-clasicas',
+            'image' => 'image/Rosas/Rosa2.jpg',    // rosas rojas intensas en vaso de cristal
+            'name'  => 'Ramo de Rosas Rojas Clásicas',
+            'price' => '30.00',
+            'label' => 'Nuevo',
         ],
     ];
 
@@ -38,14 +59,14 @@ class HomeController extends Controller
     }
 
     // Página individual de cada producto
-   public function showProduct($slug)
-{
-    $product = collect($this->products)->firstWhere('slug', $slug);
+    public function showProduct($slug)
+    {
+        $product = collect($this->products)->firstWhere('slug', $slug);
 
-    if (!$product) {
-        abort(404);
+        if (!$product) {
+            abort(404);
+        }
+
+        return view('producto', compact('product'));
     }
-
-    return view('producto', compact('product'));
-}
 }

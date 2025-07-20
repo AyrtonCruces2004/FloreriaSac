@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Open+Sans&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
-
+  @vite(['resources/css/app.css', 'resources/js/app.js'])
 
   <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
         @vite(['resources/css/app.css', 'resources/js/app.js'])
@@ -57,27 +57,27 @@
       <!-- Logo -->
       <a href="{{ url('/') }}" class="flex items-center space-x-2">
         <div class="w-8 h-8 bg-black rounded-full "></div>
-        <span class=" text-black font-['Libre_Baskerville'] hover:text-[#D4AF37] transition">Florería</span>
+        <span class=" text-black font-['Libre_Baskerville'] hover:text-[#D4AF37] transition duration-450">Florería</span>
       </a>
 
       <!-- Navegación -->
       <nav class="flex items-center gap-16  font-normal">
         <div class="flex gap-12 text-xs	">
-          <a href="{{ url('/') }}" class="text-black hover:text-[#D4AF37] uppercase tracking-wide font-['Libre_Baskerville'] transition">Inicio</a>
-          <a href="{{ url('/catalogo') }}" class="text-black hover:text-[#D4AF37] uppercase tracking-wide font-['Libre_Baskerville'] transition">Catálogo</a>
-          <a href="{{ url('/contacto') }}" class="text-black hover:text-[#D4AF37] uppercase tracking-wide font-['Libre_Baskerville'] transition">Contacto</a>
-          <a href="{{ url('/sobre-nosotros') }}" class="text-black hover:text-[#D4AF37] uppercase tracking-wide font-['Libre_Baskerville'] transition">Sobre Nosotros</a>
+          <a href="{{ url('/') }}" class="text-black hover:text-[#D4AF37] uppercase tracking-wide font-['Libre_Baskerville'] transition duration-450">Inicio</a>
+          <a href="{{ url('/catalogo') }}" class="text-black hover:text-[#D4AF37] uppercase tracking-wide font-['Libre_Baskerville'] transition duration-450">Catálogo</a>
+          <a href="{{ url('/contacto') }}" class="text-black hover:text-[#D4AF37] uppercase tracking-wide font-['Libre_Baskerville'] transition duration-450">Contacto</a>
+          <a href="{{ url('/sobre-nosotros') }}" class="text-black hover:text-[#D4AF37] uppercase tracking-wide font-['Libre_Baskerville'] transition duration-450">Sobre Nosotros</a>
         </div>
 
         <!-- Iconos -->
         <div class="flex gap-10">
-          <a href="{{ url('/carrito') }}" class="text-black hover:text-[#D4AF37] transition">
+          <a href="{{ url('/carrito') }}" class="text-black hover:text-[#D4AF37] transition duration-450">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                     d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2 9m5-9v9m4-9v9m4-9l2 9"/>
             </svg>
           </a>
-          <a href="{{ url('/perfil') }}" class="text-black hover:text-[#D4AF37] transition">
+          <a href="{{ url('/perfil') }}" class="text-black hover:text-[#D4AF37] transition duration-450">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                     d="M5.121 17.804A9 9 0 1118.879 6.196 9 9 0 015.12 17.804z"/>
@@ -114,12 +114,13 @@
       <h1 class="text-white font-semibold uppercase tracking-wide font-['Libre_Baskerville']">Bienvenido a Nuestra Florería</h1>
       <p class="mt-6 text-gray-300 tracking-wide font-['Libre_Baskerville']">Elige entre una variedad de flores frescas y hermosas.</p>
       <a href="{{ url('/catalogo') }}"
-         class="inline-block mt-15 bg-black text-white py-3 px-6 rounded-lg hover:bg-gray-900 transition duration-300 font-['Libre_Baskerville']">
-        Ver Catálogo
-      </a>
+   class="group relative inline-block mt-15 overflow-hidden px-6 py-3 rounded-lg bg-black text-white font-['Libre_Baskerville'] transition-all duration-500">
+  <span class="absolute inset-0 w-full h-full bg-white translate-x-full group-hover:translate-x-0 transition-transform duration-500 ease-out"></span>
+  <span class="relative z-10 group-hover:text-black transition-colors duration-500">Ver Catálogo</span>
+</a>
+
     </div>
 
-    {{-- Slider con efecto de fade --}}
     {{-- Slider 1 con efecto de fade --}}
 <div class="lg:w-1/2 mt-10 lg:mt-0 relative overflow-hidden px-4 md:px-0">
   <div class="relative w-full h-80 rounded-3xl overflow-hidden shadow-lg">
@@ -138,7 +139,30 @@
   </div>
 </div>
 
- 
+<script>
+  const slides1 = document.querySelectorAll('.fade-slide');
+  let currentFade1 = 0;
+
+  function showSlide1(index) {
+    slides1.forEach((slide, i) => {
+      slide.classList.toggle('opacity-100', i === index);
+      slide.classList.toggle('opacity-0', i !== index);
+    });
+  }
+
+  function goToFadeSlide(index) {
+    currentFade1 = index;
+    showSlide1(currentFade1);
+  }
+
+  setInterval(() => {
+    currentFade1 = (currentFade1 + 1) % slides1.length;
+    showSlide1(currentFade1);
+  }, 5000);
+
+  showSlide1(0);
+</script>
+
 </section>
 
 
@@ -147,61 +171,42 @@
 
 {{-- En welcome.blade.php (o donde montes el home) --}}
 <section class="py-16 bg-white">
-  <div class="container mx-auto px-6">
+  <div class="max-w-7xl mx-auto px-6">
     <!-- Título -->
     <h2 class="text-3xl font-bold text-center mb-12 uppercase tracking-wide font-['Libre_Baskerville']">
       Productos Destacados
     </h2>
 
-    <!-- Swiper -->
-    <div class="relative">
-      <div class="swiper featured-swiper">
-        <div class="swiper-wrapper">
-          @foreach($featured as $product)
-  <div class="swiper-slide px-2">
-    <a href="{{ url('/producto/' . $product['slug']) }}" class="block group">
-      <div class="bg-white rounded-lg overflow-hidden shadow hover:shadow-lg transition font-['Libre_Baskerville']">
+    <!-- Grid -->
+    <div class="grid gap-8 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+      @foreach($featured as $product)
+        <a href="{{ url('/producto/' . $product['slug']) }}" class="group block shadow-md hover:shadow-xl transition rounded-2xl overflow-hidden bg-white border border-gray-200">
+          
+          <!-- Imagen con etiqueta -->
+          <div class="relative h-64 w-full">
+            <img
+              src="{{ asset($product['image']) }}"
+              alt="{{ $product['name'] }}"
+              class="absolute inset-0 w-full h-full object-cover"
+            >
+            @if(!empty($product['label']))
+              <span class="absolute top-2 left-2 bg-white text-gray-800 text-xs font-semibold px-2 py-1 rounded z-10 shadow">
+                {{ $product['label'] }}
+              </span>
+            @endif
+          </div>
 
-        {{-- Imagen con capa opcional encima (overlay) --}}
-        <div class="relative w-full h-64">
-          <img
-            src="{{ asset($product['image']) }}"
-            alt="{{ $product['name'] }}"
-            class="absolute inset-0 w-full h-full object-cover"
-          >
-
-          {{-- Etiqueta como "Nuevo" --}}
-          @if(!empty($product['label']))
-            <span class="absolute top-2 left-2 bg-gray-100 text-gray-800 text-xs font-semibold px-2 py-1 rounded z-10">
-              {{ $product['label'] }}
-            </span>
-          @endif
-
-          {{-- Overlay con nombre --}}
-          <
-        </div>
-
-        {{-- Info del producto --}}
-        <div class="p-4">
-          <p class="text-gray-900 font-medium">{{ $product['name'] }}</p>
-          <p class="mt-2 text-gray-800 text-sm ">{{ $product['price'] }}</p>
-        </div>
-      </div>
-    </a>
-  </div>
-@endforeach
-        </div>
-
-        <!-- Botones -->
-        <div class="swiper-button-prev text-2xl text-gray-800 hover:text-black"></div>
-        <div class="swiper-button-next text-2xl text-gray-800 hover:text-black"></div>
-
-        <!-- Paginación bullets -->
-        <div class="swiper-pagination mt-6"></div>
-      </div>
+          <!-- Info del producto -->
+          <div class="p-4">
+            <p class="text-gray-900 font-semibold text-lg">{{ $product['name'] }}</p>
+            <p class="mt-1 text-gray-600 text-sm">${{ $product['price'] }}</p>
+          </div>
+        </a>
+      @endforeach
     </div>
   </div>
 </section>
+
 
 {{-- Inicialización de Swiper --}}
 <script>
@@ -229,14 +234,22 @@
     </div>
   </div>
 </section>
-{{-- Slider 2 con efecto de fade --}}
-<section class="bg-white py-12">
-  <div class="max-w-7xl mx-auto">
-    <div class="relative w-full max-w-6xl mx-auto mt-12 rounded-3xl overflow-hidden h-[500px]">
+<!-- Franja informativa superior -->
+<!-- Texto superior en fondo negro -->
+<div class="bg-black text-white text-center py-2">
+  <span class="tracking-wide uppercase text-sm">
+    Descubre la belleza de regalar flores en cada momento especial.
+  </span> 
+</div>
+
+<!-- Slider 2 con efecto de fade -->
+<section class="bg-white">
+  <div class="max-w-full mx-auto">
+    <div class="relative w-full max-w-full mx-auto mt-0 overflow-hidden h-[600px]">
       <div class="relative w-full h-full overflow-hidden" id="fade-carousel-2">
-        <img src="{{ asset('img/flor1.png') }}" alt="Flor 1" class="fade-slide-2 absolute inset-0 w-full h-full object-cover rounded-[2rem] opacity-100 transition-opacity duration-1000">
-        <img src="{{ asset('img/flor2.jpg') }}" alt="Flor 2" class="fade-slide-2 absolute inset-0 w-full h-full object-cover rounded-[2rem] opacity-0 transition-opacity duration-1000">
-        <img src="{{ asset('img/flor3.jpg') }}" alt="Flor 3" class="fade-slide-2 absolute inset-0 w-full h-full object-cover rounded-[2rem] opacity-0 transition-opacity duration-1000">
+        <img src="{{ asset('img/flor1.png') }}" alt="Flor 1" class="fade-slide-2 absolute inset-0 w-full h-full object-cover  opacity-100 transition-opacity duration-1000">
+        <img src="{{ asset('img/flor2.jpg') }}" alt="Flor 2" class="fade-slide-2 absolute inset-0 w-full h-full object-cover  opacity-0 transition-opacity duration-1000">
+        <img src="{{ asset('img/flor3.jpg') }}" alt="Flor 3" class="fade-slide-2 absolute inset-0 w-full h-full object-cover  opacity-0 transition-opacity duration-1000">
       </div>
 
       <!-- Botones indicadores -->
@@ -250,6 +263,167 @@
 </section>
 
 
+<script>
+  const fadeSlides2 = document.querySelectorAll('.fade-slide-2');
+  let fadeIndex2 = 0;
+
+  function showFadeSlide2(index) {
+    fadeSlides2.forEach((img, i) => {
+      img.classList.toggle('opacity-100', i === index);
+      img.classList.toggle('opacity-0', i !== index);
+    });
+  }
+
+  function goToFade2(index) {
+    fadeIndex2 = index;
+    showFadeSlide2(fadeIndex2);
+  }
+
+  setInterval(() => {
+    fadeIndex2 = (fadeIndex2 + 1) % fadeSlides2.length;
+    showFadeSlide2(fadeIndex2);
+  }, 5000);
+
+  showFadeSlide2(0);
+</script>
+
+</section>
+<section class="py-16 bg-white">
+  <div class="container mx-auto px-4">
+    <h2 class="text-2xl text-center mb-12 uppercase font-['Libre_Baskerville']">Categorías</h2>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+      <!-- Categoría: Rosas -->
+      <div class="text-center group cursor-pointer">
+        <div class="overflow-hidden rounded-xl shadow-lg">
+          <img src="{{ asset('image/Rosas/Rosa1.jpg') }}" alt="Rosas" class="w-full h-80 object-cover transform group-hover:scale-105 transition duration-300">
+        </div>
+        <p class="mt-4 text-lg tracking-wide uppercase font-['Libre_Baskerville']">Rosas</p>
+      </div>
+
+      <!-- Categoría: Tulipanes -->
+      <div class="text-center group cursor-pointer">
+        <div class="overflow-hidden rounded-xl shadow-lg">
+          <img src="{{ asset('image/Tulipanes/Tuli1.jpg') }}" alt="Tulipanes" class="w-full h-80 object-cover transform group-hover:scale-105 transition duration-300">
+        </div>
+        <p class="mt-4 text-lg tracking-wide uppercase font-['Libre_Baskerville']">Tulipanes</p>
+      </div>
+
+      <!-- Categoría: Girasoles -->
+      <div class="text-center group cursor-pointer">
+        <div class="overflow-hidden rounded-xl shadow-lg">
+          <img src="{{ asset('image/girasoles/gira1.jpg') }}" alt="Girasoles" class="w-full h-80 object-cover transform group-hover:scale-105 transition duration-300">
+        </div>
+        <p class="mt-4 text-lg tracking-wide uppercase font-['Libre_Baskerville']">Girasoles</p>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="bg-white py-20 px-6">
+  <h2 class="text-2xl text-center mb-12 font-['Libre_Baskerville']">CONTACTANOS</h2>
+
+  <form class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6 font-['Libre_Baskerville']">
+    <!-- Nombre -->
+    <div class="flex flex-col">
+      <label for="nombre" class="mb-2 text-sm  text-gray-700">NOMBRE</label>
+      <input
+        type="text"
+        id="nombre"
+        name="nombre"
+        placeholder="Juan Pérez"
+        required
+        class="border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-black"
+      />
+    </div>
+
+    <!-- Email -->
+    <div class="flex flex-col">
+      <label for="email" class="mb-2 text-sm  text-gray-700">EMAIL</label>
+      <input
+        type="email"
+        id="email"
+        name="email"
+        placeholder="juan@email.com"
+        required
+        class="border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-black"
+      />
+    </div>
+
+    <!-- Mensaje -->
+    <div class="flex flex-col">
+      <label for="mensaje" class="mb-2 text-sm text-gray-700">MENSAJE</label>
+      <input
+        type="text"
+        id="mensaje"
+        name="mensaje"
+        placeholder="Estoy interesado en un ramo de rosas..."
+        required
+        class="border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-black"
+      />
+    </div>
+
+    <!-- Botón Enviar -->
+    <div class="md:col-span-3 flex justify-center mt-6">
+     <button class="relative overflow-hidden bg-black text-white font-semibold px-8 py-3 rounded-md group">
+  <span class="absolute inset-0 bg-white translate-x-full group-hover:translate-x-0 transition-transform duration-500 ease-in-out"></span>
+  <span class="relative z-10 group-hover:text-black transition duration-300">Enviar</span>
+</button>
+
+    </div>
+  </form>
+</section>
+<hr class="border-t border-gray-100 my-4">
+<footer class="bg-white text-black font-['Libre_Baskerville'] px-6 py-12">
+  <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-10 text-sm">
+    
+    <!-- INFORMACIÓN -->
+    <div>
+      <h3 class="uppercase font-medium tracking-widest mb-4">Información</h3>
+      <ul class="space-y-2">
+        <li><a href="#" class="hover:underline">Política de Envíos</a></li>
+        <li><a href="#" class="hover:underline">Política de Privacidad</a></li>
+        <li><a href="#" class="hover:underline">Política de Cambios y Devoluciones</a></li>
+        <li><a href="#" class="hover:underline">Tarifario de Delivery</a></li>
+        <li><a href="#" class="hover:underline">Preguntas Frecuentes</a></li>
+      </ul>
+      <img src="/ruta/libro-reclamaciones.png" alt="Libro de Reclamaciones" class="mt-6 w-20">
+    </div>
+
+    <!-- CONTACTO -->
+    <div class="space-y-3">
+      <h3 class="uppercase font-medium tracking-widest mb-4">Contacto</h3>
+      <p><strong>Mail:</strong> Pedidos@mitienditaXD</p>
+      <p><strong>Teléfono:</strong> +51 940910751</p>
+      <p><strong>Dirección:</strong> Lima, Lima, Rimac</p>
+      <p><strong>Horarios:</strong> Lun-Sáb 8am a 5pm / Dom 8am a 4pm</p>
+    </div>
+
+    <!-- REGÍSTRATE -->
+    <div>
+      <h3 class="uppercase font-medium tracking-widest mb-4">Regístrate</h3>
+      <p class="mb-2">Recibe novedades, ofertas especiales, e increíbles sorteos.</p>
+      <div class="flex items-center border-b border-black py-2">
+        <input type="email" placeholder="Suscríbete a nuestra lista de correo" class="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none">
+        <svg class="w-6 h-6 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 12H8m0 0l4-4m-4 4l4 4" />
+        </svg>
+      </div>
+      <label class="flex items-center mt-3 text-xs">
+        <input type="checkbox" class="mr-2">
+        Acepto la <a href="#" class="underline ml-1">Política de Privacidad</a>
+      </label>
+
+      <div class="flex space-x-4 mt-6">
+        <a href="#" class="text-xl"><i class="fab fa-instagram"></i></a>
+        <a href="#" class="text-xl"><i class="fab fa-facebook"></i></a>
+      </div>
+    </div>
+  </div>
+
+  <div class="text-center mt-12 text-xs">
+    © 2025 Florería La Botánika Perú - Todos los derechos reservados.
+  </div>
+</footer>
 
   <!-- CONTENIDO -->
   <main>

@@ -353,157 +353,133 @@
       </div>
     </form>
   </section>
-  <section id="Reseñas" class="py-16 bg-[#f9f9f9]">
-    <div class="w-full px-4">
-      <h2 class="text-3xl md:text-3xl text-center text-gray-800 font-['Libre_Baskerville'] mb-10">
-        Opiniones de Clientes
-      </h2>
+  <section id="Reseñas" class="pt-12 pb-20 bg-[#f9f9f9] font-['Libre_Baskerville'] overflow-visible">
+  <div class="max-w-4xl mx-auto px-4 text-center mb-8">
+    <h2 class="text-3xl text-gray-800 uppercase">Opiniones de Clientes</h2>
+  </div>
 
-      <div class="swiper reviews-swiper overflow-hidden relative">
-        <div class="swiper-wrapper">
-          <!-- Testimonio 1 -->
-          <div class="swiper-slide flex justify-center">
-            <div class="testimonial-card bg-white rounded-xl shadow-md p-6 w-full max-w-md text-center transition-all duration-500">
-              <p class="text-gray-700 mb-6 font-['Libre_Baskerville']">
-                ★★★★★<br>
-                Todo estuvo perfecto, la atención sin problemas y bastante rápida.
-              </p>
-              <p class="font-semibold text-gray-900">L. Gamonal</p>
-              <p class="text-sm text-gray-500">Hace 1 año</p>
-            </div>
-          </div>
-
-          <!-- Testimonio 2 -->
-          <div class="swiper-slide flex justify-center">
-            <div class="testimonial-card bg-white rounded-xl shadow-md p-6 w-full max-w-md text-center transition-all duration-500">
-              <p class="text-gray-700 mb-6 font-['Libre_Baskerville']">
-                ★★★★★<br>
-                Me encantan sus arreglos. Románticos y modernos con full detalles.
-              </p>
-              <p class="font-semibold text-gray-900">J. Prado</p>
-              <p class="text-sm text-gray-500">Hace 6 meses</p>
-            </div>
-          </div>
-
-          <!-- Testimonio 3 -->
-          <div class="swiper-slide flex justify-center">
-            <div class="testimonial-card bg-white rounded-xl shadow-md p-6 w-full max-w-md text-center transition-all duration-500">
-              <p class="text-gray-700 mb-6 font-['Libre_Baskerville']">
-                ★★★★★<br>
-                Muy buen servicio y arreglos de buena calidad. ¡A mi esposa le encantó!
-              </p>
-              <p class="font-semibold text-gray-900">J. Ravelo</p>
-              <p class="text-sm text-gray-500">Hace 6 meses</p>
-            </div>
-          </div>
+  <div class="swiper reviews-swiper overflow-visible">
+    <div class="swiper-wrapper">
+      <!-- Testimonio 1 -->
+      <div class="swiper-slide flex justify-center">
+        <div class="testimonial-card bg-white rounded-2xl p-8 text-center">
+          <div class="text-2xl mb-4">★★★★★</div>
+          <p class="text-gray-700 mb-4 leading-tight">
+            Todo estuvo perfecto, la atención sin problemas y bastante rápida.
+          </p>
+          <p class="font-semibold text-gray-900">L. Gamonal</p>
+          <p class="text-sm text-gray-500">Hace 1 año</p>
         </div>
-        <div class="swiper-pagination"></div>
+      </div>
+      <!-- Testimonio 2 -->
+      <div class="swiper-slide flex justify-center">
+        <div class="testimonial-card bg-white rounded-2xl p-8 text-center">
+          <div class="text-2xl mb-4">★★★★★</div>
+          <p class="text-gray-700 mb-4 leading-tight">
+            Me encantan sus arreglos. Románticos y modernos con full detalles.
+          </p>
+          <p class="font-semibold text-gray-900">J. Prado</p>
+          <p class="text-sm text-gray-500">Hace 6 meses</p>
+        </div>
+      </div>
+      <!-- Testimonio 3 -->
+      <div class="swiper-slide flex justify-center">
+        <div class="testimonial-card bg-white rounded-2xl p-8 text-center">
+          <div class="text-2xl mb-4">★★★★★</div>
+          <p class="text-gray-700 mb-4 leading-tight">
+            Muy buen servicio y arreglos de buena calidad. ¡A mi esposa le encantó!
+          </p>
+          <p class="font-semibold text-gray-900">J. Ravelo</p>
+          <p class="text-sm text-gray-500">Hace 6 meses</p>
+        </div>
+      </div>
+      <div class="swiper-slide flex justify-center">
+        <div class="testimonial-card bg-white rounded-2xl p-8 text-center">
+          <div class="text-2xl mb-4">★★★★★</div>
+          <p class="text-gray-700 mb-4 leading-tight">
+            Muy buen servicio y arreglos de buena calidad. ¡A mi esposa le encantó!
+          </p>
+          <p class="font-semibold text-gray-900">J. Ravelo</p>
+          <p class="text-sm text-gray-500">Hace 6 meses</p>
+        </div>
       </div>
     </div>
-  </section>
+    
 
-  <!-- Swiper & efecto de ampliación con JS -->
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const swiper = new Swiper('.reviews-swiper', {
-        loop: true,
-        slidesPerView: 1,
-        spaceBetween: 20,
-        pagination: {
-          el: '.swiper-pagination',
-          clickable: true,
-        },
-        autoplay: {
-          delay: 5000,
-          disableOnInteraction: false,
-        },
-        breakpoints: {
-          768: {
-            slidesPerView: 2
-          },
-          1024: {
-            slidesPerView: 3
-          },
-        },
-        on: {
-          slideChangeTransitionEnd: function() {
-            document.querySelectorAll('.testimonial-card').forEach(card => {
-              card.classList.remove('is-active');
-            });
+    <!-- bullets grises -->
+    <div class="swiper-pagination mt-6"></div>
+  </div>
+</section>
 
-            // activa solo la tarjeta actual
-            const activeSlide = swiper.slides[swiper.activeIndex];
-            if (activeSlide) {
-              const activeCard = activeSlide.querySelector('.testimonial-card');
-              if (activeCard) activeCard.classList.add('is-active');
-            }
-          },
-          init: function() {
-            const activeCard = this.slides[this.activeIndex].querySelector('.testimonial-card');
-            if (activeCard) activeCard.classList.add('is-active');
-          }
-        }
-      });
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    new Swiper('.reviews-swiper', {
+      loop: true,
+      centeredSlides: true,
+      initialSlide: 2,        // <— aquí le decimos que inicie en el slide índice 1
+      slidesPerView: 'auto',
+      spaceBetween: 80,
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+        dynamicBullets: true
+      },
+      autoplay: {
+        delay: 5000,
+        disableOnInteraction: false
+      },
+      breakpoints: {
+        640:  { spaceBetween: 60 },
+        1024: { spaceBetween: 100 }
+      }
     });
-  </script>
-
-  <!-- Estilo para la clase activa -->
-  <style>
-    .testimonial-card {
-      transform: scale(1);
-    }
-
-    .testimonial-card.is-active {
-      transform: scale(0.5);
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-      z-index: 100;
-    }
-
-    .swiper-pagination {
-      margin-top: 10rem;
-      /* mt-10 equivalente */
-    }
-
-    .swiper-pagination-bullet {
-      background-color: #000 !important;
-      opacity: 0.4;
-      transition: transform 0.3s ease;
-    }
-
-    .swiper-pagination-bullet-active {
-      background-color: #000 !important;
-      opacity: 1;
-      transform: scale(1.2);
-    }
-  </style>
+  });
+</script>
 
 
+<style>
+  /* padding lateral para que nunca queden cards pegadas al viewport */
+  .reviews-swiper { padding: 0 2rem; }
 
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      new Swiper('.reviews-swiper', {
-        loop: true,
-        slidesPerView: 1,
-        spaceBetween: 20,
-        autoplay: {
-          delay: 5000,
-          disableOnInteraction: false,
-        },
-        pagination: {
-          el: '.swiper-pagination',
-          clickable: true,
-        },
-        breakpoints: {
-          768: {
-            slidesPerView: 2
-          },
-          1024: {
-            slidesPerView: 3
-          },
-        },
-      });
-    });
-  </script>
+  /* cada slide más ancho: 360px */
+  .reviews-swiper .swiper-slide {
+    width: 600px !important;
+  }
+
+  /* tarjeta base reducida + margen inferior extra para la sombra */
+  .testimonial-card {
+    transform: scale(0.85);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+    margin-bottom: 5rem;
+  }
+
+  /* tarjeta central destacada */
+  .swiper-slide-active .testimonial-card {
+    transform: scale(1);
+    box-shadow: 0 30px 60px rgba(0,0,0,0.15);
+    z-index: 10;
+  }
+
+  /* bullets grises */
+  .swiper-pagination-bullet {
+    width: 10px;
+    height: 10px;
+    background-color: #ccc !important;
+    opacity: 1;
+    margin: 0 6px !important;
+    transition: all 0.3s ease;
+  }
+  .swiper-pagination-bullet-active {
+    width: 12px;
+    height: 12px;
+    background-color: #888 !important;
+  }
+</style>
+
+
+
+  
 
 
   <hr class="border-t border-gray-300 my-20">

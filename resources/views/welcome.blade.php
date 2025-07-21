@@ -52,26 +52,20 @@
 
 <body class="bg-white">
   <!-- HEADER -->
-  <header class="bg-white shadow-md">
+   <header class="bg-white shadow-md sticky top-0 z-20">
     <div class="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex items-center justify-between h-16">
-
-        <!-- Logo -->
         <a href="{{ url('/') }}" class="flex items-center space-x-2">
-          <div class="w-8 h-8 bg-black rounded-full "></div>
-          <span class=" text-black font-['Libre_Baskerville'] hover:text-[#D4AF37] transition duration-450">Florería</span>
+          <div class="w-8 h-8 bg-black rounded-full"></div>
+          <span class="text-black font-['Libre_Baskerville'] hover:text-[#D4AF37] transition duration-450">Florería</span>
         </a>
-
-        <!-- Navegación -->
-        <nav class="flex items-center gap-16  font-normal">
-          <div class="flex gap-12 text-xs	">
+        <nav class="flex items-center gap-16 font-normal">
+          <div class="flex gap-12 text-xs">
             <a href="{{ url('/') }}" class="text-black hover:text-[#D4AF37] uppercase tracking-wide font-['Libre_Baskerville'] transition duration-450">Inicio</a>
             <a href="{{ url('/catalogo') }}" class="text-black hover:text-[#D4AF37] uppercase tracking-wide font-['Libre_Baskerville'] transition duration-450">Catálogo</a>
             <a href="{{ url('/contacto') }}" class="text-black hover:text-[#D4AF37] uppercase tracking-wide font-['Libre_Baskerville'] transition duration-450">Contacto</a>
             <a href="{{ url('/sobre-nosotros') }}" class="text-black hover:text-[#D4AF37] uppercase tracking-wide font-['Libre_Baskerville'] transition duration-450">Sobre Nosotros</a>
           </div>
-
-          <!-- Iconos -->
           <div class="flex gap-10">
             <a href="{{ url('/carrito') }}" class="text-black hover:text-[#D4AF37] transition duration-450">
               <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -111,9 +105,9 @@
       <div class="lg:w-1/2 mt-10 lg:mt-0 relative overflow-hidden px-4 md:px-0">
         <div class="relative w-full h-80 rounded-3xl overflow-hidden shadow-lg">
           <div id="fade-slider" class="relative w-full h-full">
-            <img src="{{ asset('img/Flor1.png') }}" class="fade-slide absolute inset-0 w-full h-full object-cover rounded-3xl opacity-100 transition-opacity duration-1000" alt="Flor 1">
-            <img src="{{ asset('img/Flor2.jpg') }}" class="fade-slide absolute inset-0 w-full h-full object-cover rounded-3xl opacity-0 transition-opacity duration-1000" alt="Flor 2">
-            <img src="{{ asset('img/Flor3.jpg') }}" class="fade-slide absolute inset-0 w-full h-full object-cover rounded-3xl opacity-0 transition-opacity duration-1000" alt="Flor 3">
+            <img src="{{ asset('img/Flor1.png') }}" class="fade-slide absolute inset-0 w-full h-full object-cover rounded-3xl opacity-100 transition-opacity duration-1500" alt="Flor 1">
+            <img src="{{ asset('img/Flor2.jpg') }}" class="fade-slide absolute inset-0 w-full h-full object-cover rounded-3xl opacity-0 transition-opacity duration-1500" alt="Flor 2">
+            <img src="{{ asset('img/Flor3.jpg') }}" class="fade-slide absolute inset-0 w-full h-full object-cover rounded-3xl opacity-0 transition-opacity duration-1500" alt="Flor 3">
           </div>
 
           {{-- Bullets --}}
@@ -236,9 +230,9 @@
     <div class="max-w-full mx-auto">
       <div class="relative w-full max-w-full mx-auto mt-0 overflow-hidden h-[600px]">
         <div class="relative w-full h-full overflow-hidden" id="fade-carousel-2">
-          <img src="{{ asset('img/flor1.png') }}" alt="Flor 1" class="fade-slide-2 absolute inset-0 w-full h-full object-cover  opacity-100 transition-opacity duration-1000">
-          <img src="{{ asset('img/flor2.jpg') }}" alt="Flor 2" class="fade-slide-2 absolute inset-0 w-full h-full object-cover  opacity-0 transition-opacity duration-1000">
-          <img src="{{ asset('img/flor3.jpg') }}" alt="Flor 3" class="fade-slide-2 absolute inset-0 w-full h-full object-cover  opacity-0 transition-opacity duration-1000">
+          <img src="{{ asset('img/flor1.png') }}" alt="Flor 1" class="fade-slide-2 absolute inset-0 w-full h-full object-cover  opacity-100 transition-opacity duration-1500">
+          <img src="{{ asset('img/flor2.jpg') }}" alt="Flor 2" class="fade-slide-2 absolute inset-0 w-full h-full object-cover  opacity-0 transition-opacity duration-1500">
+          <img src="{{ asset('img/flor3.jpg') }}" alt="Flor 3" class="fade-slide-2 absolute inset-0 w-full h-full object-cover  opacity-0 transition-opacity duration-1500">
         </div>
 
         <!-- Botones indicadores -->
@@ -287,7 +281,7 @@
           <div class="overflow-hidden rounded-xl shadow-lg">
             <img src="{{ asset('image/Rosas/Rosa1.jpg') }}" alt="Rosas" class="w-full h-80 object-cover transform group-hover:scale-105 transition duration-300">
           </div>
-          <p class="mt-4 text-lg tracking-wide uppercase font-['Libre_Baskerville']">Rosas</p>
+          <p class="mt-4 text-lg tracking-wide uppercase font-['Libre_Baskerville']">rosas</p>
         </div>
 
         <!-- Categoría: Tulipanes -->
@@ -308,6 +302,7 @@
       </div>
     </div>
   </section>
+  <hr class="border-t border-gray-300 my-1">
   <section class="bg-white py-20 px-6">
     <h2 class="text-2xl text-center mb-12 font-['Libre_Baskerville']">CONTACTANOS</h2>
 
@@ -358,7 +353,7 @@
       </div>
     </form>
   </section>
-  <section id="Reseñas" class="py-16 bg-[#D9D9D9]">
+  <section id="Reseñas" class="py-16 bg-[#f9f9f9]">
     <div class="w-full px-4">
       <h2 class="text-3xl md:text-3xl text-center text-gray-800 font-['Libre_Baskerville'] mb-10">
         Opiniones de Clientes
@@ -459,7 +454,7 @@
     }
 
     .testimonial-card.is-active {
-      transform: scale(1);
+      transform: scale(0.5);
       box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
       z-index: 100;
     }
@@ -511,7 +506,7 @@
   </script>
 
 
-  <hr class="border-t border-gray-100 my-20">
+  <hr class="border-t border-gray-300 my-20">
   <footer class="bg-white text-black font-['Libre_Baskerville'] px-6 py-12">
     <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-10 text-sm">
 
@@ -531,7 +526,7 @@
       <!-- CONTACTO -->
       <div class="space-y-3">
         <h3 class="uppercase font-medium tracking-widest mb-4">Contacto</h3>
-        <p><strong>Mail:</strong> Pedidos@mitienditaXD</p>
+        <p><strong>Mail:</strong> josesaaca@gmail.com</p>
         <p><strong>Teléfono:</strong> +51 940910751</p>
         <p><strong>Dirección:</strong> Lima, Lima, Rimac</p>
         <p><strong>Horarios:</strong> Lun-Sáb 8am a 5pm / Dom 8am a 4pm</p>

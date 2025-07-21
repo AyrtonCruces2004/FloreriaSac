@@ -47,126 +47,156 @@
             scroll-behavior: smooth;
             }
         </style>
-</head>
-<body class="bg-white">
+<body class="bg-white flex flex-col min-h-screen">
+
   <!-- HEADER -->
-  <header class="bg-white shadow-md">
-  <div class="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="flex items-center justify-between h-16">
-      
-      <!-- Logo -->
-      <a href="{{ url('/') }}" class="flex items-center space-x-2">
-        <div class="w-8 h-8 bg-black rounded-full "></div>
-        <span class=" text-black font-['Libre_Baskerville'] hover:text-[#D4AF37] transition duration-450">Florería</span>
-      </a>
-
-      <!-- Navegación -->
-      <nav class="flex items-center gap-16  font-normal">
-        <div class="flex gap-12 text-xs	">
-          <a href="{{ url('/') }}" class="text-black hover:text-[#D4AF37] uppercase tracking-wide font-['Libre_Baskerville'] transition duration-450">Inicio</a>
-          <a href="{{ url('/catalogo') }}" class="text-black hover:text-[#D4AF37] uppercase tracking-wide font-['Libre_Baskerville'] transition duration-450">Catálogo</a>
-          <a href="{{ url('/contacto') }}" class="text-black hover:text-[#D4AF37] uppercase tracking-wide font-['Libre_Baskerville'] transition duration-450">Contacto</a>
-          <a href="{{ url('/sobre-nosotros') }}" class="text-black hover:text-[#D4AF37] uppercase tracking-wide font-['Libre_Baskerville'] transition duration-450">Sobre Nosotros</a>
-        </div>
-
-        <!-- Iconos -->
-        <div class="flex gap-10">
-          <a href="{{ url('/carrito') }}" class="text-black hover:text-[#D4AF37] transition duration-450">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                    d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2 9m5-9v9m4-9v9m4-9l2 9"/>
-            </svg>
-          </a>
-          <a href="{{ url('/perfil') }}" class="text-black hover:text-[#D4AF37] transition duration-450">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                    d="M5.121 17.804A9 9 0 1118.879 6.196 9 9 0 015.12 17.804z"/>
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                    d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
-            </svg>
-          </a>
-        </div>
-      </nav>
+  <header class="bg-white shadow-md sticky top-0 z-20">
+    <div class="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        <a href="{{ url('/') }}" class="flex items-center space-x-2">
+          <div class="w-8 h-8 bg-black rounded-full"></div>
+          <span class="text-black font-['Libre_Baskerville'] hover:text-[#D4AF37] transition duration-450">Florería</span>
+        </a>
+        <nav class="flex items-center gap-16 font-normal">
+          <div class="flex gap-12 text-xs">
+            <a href="{{ url('/') }}" class="text-black hover:text-[#D4AF37] uppercase tracking-wide font-['Libre_Baskerville'] transition duration-450">Inicio</a>
+            <a href="{{ url('/catalogo') }}" class="text-black hover:text-[#D4AF37] uppercase tracking-wide font-['Libre_Baskerville'] transition duration-450">Catálogo</a>
+            <a href="{{ url('/contacto') }}" class="text-black hover:text-[#D4AF37] uppercase tracking-wide font-['Libre_Baskerville'] transition duration-450">Contacto</a>
+            <a href="{{ url('/sobre-nosotros') }}" class="text-black hover:text-[#D4AF37] uppercase tracking-wide font-['Libre_Baskerville'] transition duration-450">Sobre Nosotros</a>
+          </div>
+          <div class="flex gap-10">
+            <a href="{{ url('/carrito') }}" class="text-black hover:text-[#D4AF37] transition duration-450">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2 9m5-9v9m4-9v9m4-9l2 9" />
+              </svg>
+            </a>
+            <a href="{{ url('/perfil') }}" class="text-black hover:text-[#D4AF37] transition duration-450">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M5.121 17.804A9 9 0 1118.879 6.196 9 9 0 015.12 17.804z" />
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+              </svg>
+            </a>
+          </div>
+        </nav>
+      </div>
     </div>
-  </div>
-</header>
-<!-- ◄ END HEADER -->
+  </header>
 
-  <div class="flex ">
+  <!-- CONTENEDOR PRINCIPAL -->
+  <div class="flex flex-1">
 
-    <!-- ► BARRA LATERAL DE CATEGORÍAS -->
+    <!-- ASIDE: categorías -->
     <aside class="w-1/5 bg-gray-100 p-4">
-      <h2 class="text-4x1 mb-4 font-['Libre_Baskerville']">Categorías</h2>
-      <ul class="space-y-5">
-        <li><a href="{{ route('catalogo',['categoria'=>'rosas']) }}"     class="text-pink-500 text-sm font-['Libre_Baskerville']">🌹 Rosas</a></li>
-        <li><a href="{{ route('catalogo',['categoria'=>'tulipanes']) }}"  class="text-pink-500 text-sm font-['Libre_Baskerville']">🌷 Tulipanes</a></li>
-        <li><a href="{{ route('catalogo',['categoria'=>'girasoles']) }}" class="text-pink-500  text-sm font-['Libre_Baskerville']">🌻 Girasoles</a></li>
-        <li><a href="{{ route('catalogo') }}" class="text-gray-600">Mostrar todos</a></li>
+      <h2 class="text-lg font-['Libre_Baskerville'] mb-4">Categorías</h2>
+      <ul class="space-y-4">
+        <li><a href="{{ route('catalogo',['categoria'=>'rosas']) }}" class="text-pink-500 text-sm font-['Libre_Baskerville'] ">🌹 Rosas</a></li>
+        <li><a href="{{ route('catalogo',['categoria'=>'tulipanes']) }}" class="text-pink-500 text-sm font-['Libre_Baskerville']">🌷 Tulipanes</a></li>
+        <li><a href="{{ route('catalogo',['categoria'=>'girasoles']) }}" class="text-pink-500 text-sm font-['Libre_Baskerville']">🌻 Girasoles</a></li>
+        <li><a href="{{ route('catalogo') }}" class="text-gray-600 text-sm font-['Libre_Baskerville']">Mostrar todos</a></li>
       </ul>
     </aside>
-    <!-- ◄ END SIDEBAR -->
 
-    <!-- ► CONTENIDO PRINCIPAL -->
-    <main class="w-4/5 px-6">
+    <!-- COLUMNA DERECHA: main + hr + footer -->
+    <div class="flex-1 flex flex-col">
 
-      <h1 class="text-3xl   text-center mb-4 font-['Libre_Baskerville']">Catálogo de Productos</h1>
+      <!-- MAIN: catálogo de productos -->
+      <main class="flex-1 px-6 pt-12">
+        <h1 class="text-3xl text-center mb-4 font-['Libre_Baskerville']">CATALOGO</h1>
 
-      <!-- ► BUSCADOR -->
-      <form method="GET" action="{{ route('catalogo') }}" class="flex justify-end mb-6">
-        <input
-          type="text" name="busqueda"
-          value="{{ request('busqueda') }}"
-          placeholder="Buscar en sitio…"
-          class="border rounded px-4 py-2 w-1/3"
-        >
-        <button type="submit" class="ml-2 bg-pink-500 text-white px-4 py-2 rounded">🔍</button>
-      </form>
+        <!-- buscador -->
+        <form method="GET" action="{{ route('catalogo') }}" class="flex justify-end mb-6">
+          <input type="text" name="busqueda" value="{{ request('busqueda') }}"
+                 placeholder="Buscar en sitio…" class="border rounded-l px-4 py-2 w-1/3">
+          <button type="submit" class="bg-pink-500 text-white px-4 py-2 rounded-r hover:bg-pink-600">🔍</button>
+        </form>
 
-      <!-- ► TÍTULO DE FILTRO ACTIVO -->
-      <h2 class="text-xl text-center mb-6 font-['Libre_Baskerville']">
-        Mostrando: {{ ucfirst($categoriaActiva) }}
-      </h2>
+        <!-- filtro activo -->
+        <h2 class="text-xl text-center mb-6 font-['Libre_Baskerville']">
+          MOSTRANDO: <span class="text-black">{{ ucfirst($categoriaActiva) }}</span>
+        </h2>
 
-      <!-- ► GRID DE PRODUCTOS -->
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        @forelse ($productos as $p)
-  <a href="{{ url('/producto/' . $p['slug']) }}"
-     class="group block bg-white border border-gray-200 rounded-2xl overflow-hidden shadow hover:shadow-lg transition">
-    
-    <!-- Imagen + etiqueta -->
-    <div class="relative h-64 w-full">
-      <img src="{{ asset($p['image']) }}"
-           alt="{{ $p['name'] }}"
-           class="absolute inset-0 w-full h-full object-cover">
-      @if(!empty($p['label']))
-        <span class="absolute top-3 left-3 bg-white text-gray-800 text-xs font-semibold px-2 py-1 rounded shadow">
-          {{ $p['label'] }}
-        </span>
-      @endif
+        <!-- grid de productos -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          @forelse ($productos as $p)
+            <a href="{{ url('/producto/' . $p['slug']) }}"
+               class="group block bg-white border border-gray-200 rounded-2xl overflow-hidden shadow hover:shadow-lg transition">
+              <div class="relative h-64 w-full">
+                <img src="{{ asset($p['image']) }}" alt="{{ $p['name'] }}"
+                     class="absolute inset-0 w-full h-full object-cover">
+                @if(!empty($p['label']))
+                  <span class="absolute top-3 left-3 bg-white text-gray-800 text-xs font-semibold px-2 py-1 rounded shadow">
+                    {{ $p['label'] }}
+                  </span>
+                @endif
+              </div>
+              <div class="p-6">
+                <p class="text-lg text-gray-900 group-hover:text-pink-600">{{ $p['name'] }}</p>
+                <p class="mt-2 text-gray-600">${{ $p['price'] }}</p>
+              </div>
+            </a>
+          @empty
+            <p class="col-span-3 text-center text-black font-['Libre_Baskerville']">No se encontraron productos.</p>
+          @endforelse
+        </div>
+      </main>
+
+      <!-- Separador pegado al final de main -->
+      <hr class="border-t border-gray-300 my-10 mx-0">
+
+      <!-- FOOTER -->
+      <footer class="bg-white text-black font-['Libre_Baskerville'] px-6 py-12">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-10 text-sm">
+          <!-- Información -->
+          <div>
+            <h3 class="uppercase font-medium tracking-widest mb-4">Información</h3>
+            <ul class="space-y-5">
+              <li><a href="#" class="hover:underline">Política de Envíos</a></li>
+              <li><a href="#" class="hover:underline">Política de Privacidad</a></li>
+              <li><a href="#" class="hover:underline">Política de Cambios y Devoluciones</a></li>
+              <li><a href="#" class="hover:underline">Tarifario de Delivery</a></li>
+              <li><a href="#" class="hover:underline">Preguntas Frecuentes</a></li>
+            </ul>
+            <img src="/ruta/libro-reclamaciones.png" alt="Libro de Reclamaciones" class="mt-6 w-20">
+          </div>
+          <!-- Contacto -->
+          <div class="space-y-5" >
+            <h3 class="uppercase font-medium tracking-widest mb-4 ">Contacto</h3>
+            <p><strong>Mail:</strong> josesaaca@gmail.com</p>
+            <p><strong>Teléfono:</strong> +51 940910751</p>
+            <p><strong>Dirección:</strong> Lima, Lima, Rímac</p>
+            <p><strong>Horarios:</strong> Lun–Sáb 8 am–5 pm / Dom 8 am–4 pm</p>
+          </div>
+          <!-- Regístrate -->
+          <div>
+            <h3 class="uppercase font-medium tracking-widest mb-4">Regístrate</h3>
+            <p class="mb-2">Recibe novedades, ofertas especiales, e increíbles sorteos.</p>
+            <div class="flex items-center border-b border-black py-2">
+              <input type="email" placeholder="Suscríbete a nuestra lista de correo"
+                     class="appearance-none bg-transparent border-none w-full text-gray-700 py-1 px-2 focus:outline-none">
+              <svg class="w-6 h-6 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M16 12H8m0 0l4-4m-4 4l4 4" />
+              </svg>
+            </div>
+            <label class="flex items-center mt-3 text-xs">
+              <input type="checkbox" class="mr-2">
+              Acepto la <a href="#" class="underline ml-1">Política de Privacidad</a>
+            </label>
+            <div class="flex space-x-4 mt-6">
+              <a href="#" class="text-xl"><i class="fab fa-instagram"></i></a>
+              <a href="#" class="text-xl"><i class="fab fa-facebook"></i></a>
+            </div>
+          </div>
+        </div>
+        <div class="text-center mt-12 text-xs">
+          © 2025 Jose Ayrton Calderon Cruces Todos los derechos reservados. Uwu
+        </div>
+      </footer>
     </div>
-
-    <!-- Info del producto -->
-    <div class="p-6">
-      <p class="text-sm text-gray-900 group-hover:text-black transition font-['Libre_Baskerville']">
-        {{ $p['name'] }}
-      </p>
-      <p class="mt-2 text-sm text-gray-600 font-['Libre_Baskerville']">${{ $p['price'] }}</p>
-    </div>
-  </a>
-@empty
-  <p class="col-span-3 text-center text-gray-500">No se encontraron productos.</p>
-@endforelse
-      </div>
-
-    </main>
-    <!-- ◄ END MAIN -->
-
   </div>
-
-  <!-- ► FOOTER copiado de tu welcome.blade.php -->
-  <footer class="bg-gray-100 text-center p-4 mt-10">
-    © 2025 Florería SAC. Todos los derechos reservados.
-  </footer>
-  <!-- ◄ END FOOTER -->
-
+</body>
+</html>
 </body>

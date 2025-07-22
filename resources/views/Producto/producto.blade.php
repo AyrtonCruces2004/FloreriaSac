@@ -110,21 +110,21 @@
 
   {{-- Columna derecha: detalles --}}
   <div class="space-y-6">
-    <h1 class="text-4xl font-bold">{{ $product['name'] }}</h1>
+    <h1 class="text-2xl font-bold font-['Libre_Baskerville']">{{ $product['name'] }}</h1>
 
-    <div>
-      <h2 class="text-lg font-semibold mb-1">DESCRIPCIÓN</h2>
-      <p class="text-gray-700">{{ $product['description'] }}</p>
+    <div >
+      <h2 class="text-lg font-['Libre_Baskerville'] mb-1">DESCRIPCIÓN</h2>
+      <p class="text-sm font-['Libre_Baskerville']">{{ $product['description'] }}</p>
+    </div>
+
+    <div class="space-y-2">
+      <h2 class="text-lg font-['Libre_Baskerville'] space-y-2">Precio y Stock</h2>
+      <p class="text-xl font-['Libre_Baskerville'] text-gray-900">${{ $product['price'] }}</p>
+      <p class="text-sm font-['Libre_Baskerville'] text-green-600">{{ $product['label'] > 0 ? 'En stock' : 'Agotado' }}</p>
     </div>
 
     <div>
-      <h2 class="text-lg font-semibold mb-1">Precio y Stock</h2>
-      <p class="text-3xl font-bold text-gray-900">${{ $product['price'] }}</p>
-      <p class="text-sm text-green-600">{{ $product['label'] > 0 ? 'En stock' : 'Agotado' }}</p>
-    </div>
-
-    <div>
-  <h2 class="text-lg font-semibold mb-2">COLORES</h2>
+  <h2 class="text-lg font-['Libre_Baskerville'] mb-2">COLORES</h2>
   <div class="flex items-center space-x-3">
     @foreach($product['colors'] as $color)
        <button
@@ -143,20 +143,20 @@
 
     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
       <div>
-        <label class="block text-sm font-medium mb-1">Fecha</label>
+        <label class="block text-sm font-['Libre_Baskerville'] mb-1">Fecha</label>
         <input type="date" class="w-full border border-gray-300 rounded-lg px-3 py-2" />
       </div>
       <div>
-        <label class="block text-sm font-medium mb-1">Horario</label>
+        <label class="block text-sm font-['Libre_Baskerville'] mb-1">Horario</label>
         <input type="time" class="w-full border border-gray-300 rounded-lg px-3 py-2" />
       </div>
     </div>
 
     <div class="flex space-x-4">
-      <button class="flex-1 bg-green-500 text-white py-3 rounded-lg hover:bg-green-600 transition">
+      <button class="flex-1 bg-black font-['Libre_Baskerville'] text-white py-3 rounded-lg hover:bg-green-600 transition">
         Confirmar Entrega
       </button>
-      <button class="flex-1 bg-purple-600 text-white py-3 rounded-lg hover:bg-purple-700 transition">
+      <button class="flex-1 bg-black font-['Libre_Baskerville'] text-white py-3 rounded-lg hover:bg-purple-700 transition">
         Agregar al carrito
       </button>
     </div>

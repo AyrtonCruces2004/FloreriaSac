@@ -73,4 +73,23 @@ ddocument.addEventListener('DOMContentLoaded', () => {
 
     showSlide1(0)
   }
+  // Fecha → habilita el timepicker
+const fechaInput = document.getElementById('fecha')
+const horaInput  = document.getElementById('horario')
+const iconHora   = document.getElementById('ic-hora')
+
+fechaInput.addEventListener('change', () => {
+  if (fechaInput.value) {
+    horaInput.disabled = false
+    horaInput.classList.remove('bg-gray-100','text-gray-500')
+    horaInput.classList.add('bg-white','text-black')
+    iconHora.querySelector('svg').classList.replace('text-gray-400','text-gray-500')
+  } else {
+    horaInput.disabled = true
+    horaInput.classList.add('bg-gray-100','text-gray-500')
+    horaInput.classList.remove('bg-white','text-black')
+    iconHora.querySelector('svg').classList.replace('text-gray-500','text-gray-400')
+  }
+})
+
 })

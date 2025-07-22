@@ -26,7 +26,7 @@ class HomeController extends Controller
         'gallery'     => [
             'image/Rosas/Rosa1.jpg',
             'image/Rosas/Rosa2.jpg',
-            'image/Rosas/Rosa3.jpg',
+            'image/Rosas/Rosas3.jpg',
         ],
         ],
         [
@@ -47,7 +47,7 @@ class HomeController extends Controller
         'gallery'     => [
             'image/Rosas/Rosa1.jpg',
             'image/Rosas/Rosa2.jpg',
-            'image/Rosas/Rosa3.jpg',
+            'image/Rosas/Rosas3.jpg',
         ],
         ],
         [
@@ -68,7 +68,7 @@ class HomeController extends Controller
         'gallery'     => [
             'image/Rosas/Rosa1.jpg',
             'image/Rosas/Rosa2.jpg',
-            'image/Rosas/Rosa3.jpg',
+            'image/Rosas/Rosas3.jpg',
         ],
         ],
         [
@@ -89,7 +89,7 @@ class HomeController extends Controller
         'gallery'     => [
             'image/Rosas/Rosa1.jpg',
             'image/Rosas/Rosa2.jpg',
-            'image/Rosas/Rosa3.jpg',
+            'image/Rosas/Rosas3.jpg',
         ],
         ],
         [
@@ -110,7 +110,7 @@ class HomeController extends Controller
         'gallery'     => [
             'image/Rosas/Rosa1.jpg',
             'image/Rosas/Rosa2.jpg',
-            'image/Rosas/Rosa3.jpg',
+            'image/Rosas/Rosas3.jpg',
         ],
         ],
         [
@@ -131,7 +131,7 @@ class HomeController extends Controller
         'gallery'     => [
             'image/Rosas/Rosa1.jpg',
             'image/Rosas/Rosa2.jpg',
-            'image/Rosas/Rosa3.jpg',
+            'image/Rosas/Rosas3.jpg',
         ],
         ],
     ];

@@ -141,29 +141,58 @@
   </div>
 </div>
 
-    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-      <div>
-        <label class="block text-sm font-['Libre_Baskerville'] mb-1">Fecha</label>
-        <input type="date" class="w-full border border-gray-300 rounded-lg px-3 py-2" />
-      </div>
-      <div>
-        <label class="block text-sm font-['Libre_Baskerville'] mb-1">Horario</label>
-        <input type="time" class="w-full border border-gray-300 rounded-lg px-3 py-2" />
-      </div>
-    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
 
-    <div class="flex space-x-4">
-      <button class="flex-1 bg-black font-['Libre_Baskerville'] text-white py-3 rounded-lg hover:bg-green-600 transition">
-        Confirmar Entrega
-      </button>
-      <button class="flex-1 bg-black font-['Libre_Baskerville'] text-white py-3 rounded-lg hover:bg-purple-700 transition">
-        Agregar al carrito
-      </button>
-    </div>
+  {{-- Fecha --}}
+  <div class="relative">
+    <label for="fecha" class="block text-sm font-['Libre_Baskerville'] mb-1">Fecha de entrega</label>
+    <input
+      id="fecha"
+      type="date"
+      class="w-full border border-gray-300 rounded-lg px-3 py-2 pr-10 focus:border-black focus:ring-black transition"
+    />
+    <span class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
+      <!-- ícono calendario -->
+    </span>
+  </div>
 
-    <a href="{{ url('/') }}" class="inline-block text-gray-500 hover:underline">
-      ← Volver al inicio
-    </a>
+  {{-- Hora --}}
+  <div class="relative">
+    <label for="horario" class="block text-sm font-['Libre_Baskerville'] mb-1">Horario</label>
+    <input
+      id="horario"
+      type="time"
+      disabled
+      class="w-full border border-gray-300 rounded-lg px-3 py-2 pr-10 bg-gray-100 text-gray-500 focus:border-black focus:ring-black transition"
+    />
+    <span id="ic-hora" class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
+      <!-- ícono reloj -->
+    </span>
+  </div>
+
+  {{-- Botón debajo, ocupando ambas columnas en md+ --}}
+  <div class="md:col-span-2">
+    <button
+      type="button"
+      class="group relative w-full overflow-hidden bg-black text-white font-['Libre_Baskerville'] text-sm uppercase tracking-widest py-3 rounded-4xl shadow-lg transition transform hover:scale-105 hover:shadow-2xl focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#D4AF37]"
+    >
+      <span class="absolute inset-0 bg-gradient-to-r from-transparent via-[#D4AF37]/30 to-transparent
+                   opacity-0 group-hover:opacity-100 transition-opacity duration-500"></span>
+      <span class="relative">Agregar al carrito</span>
+    </button>
+  </div>
+
+</div>
+
+<p class="mt-2 text-xs text-gray-600 font-['Libre_Baskerville']">
+  *Si deseas hora específica, primero elige la fecha y luego elige el horario.
+</p>
+
+<a href="{{ url('/') }}" class="inline-block mt-6 text-gray-500 hover:underline">
+  ← Volver al inicio
+</a>
+
+</div>
   </div>
 
 </div>

@@ -18,6 +18,7 @@
         "vite": "^6.2.4"
     },
     "dependencies": {
+        "smooth-scrollbar": "^8.8.4",
         "swiper": "^11.2.10"
     }
 }

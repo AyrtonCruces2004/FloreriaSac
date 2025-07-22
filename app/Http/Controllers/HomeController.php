@@ -16,6 +16,18 @@ class HomeController extends Controller
             'label' => 'Nuevo',
             'category' => 'rosas',
             'featured' => true,
+            'description' => 'Un hermoso ramo de rosas rosadas frescas en jarrón de cerámica blanca.',
+            'colors'      => [
+            '#000000', // negro
+            '#FFFFFF', // blanco
+            '#C0C0C0', // gris claro
+            '#F5E1E0', // rosa pálido
+        ],
+        'gallery'     => [
+            'image/Rosas/Rosa1.jpg',
+            'image/Rosas/Rosa2.jpg',
+            'image/Rosas/Rosa3.jpg',
+        ],
         ],
         [
             'slug'  => 'ramo-de-rosas-rojas-clasicas',
@@ -25,6 +37,18 @@ class HomeController extends Controller
             'label' => 'Nuevo',
             'category' => 'rosas',
             'featured' => true,
+            'description' => 'Un hermoso ramo de rosas rosadas frescas en jarrón de cerámica blanca.',
+            'colors'      => [
+            '#000000', // negro
+            '#FFFFFF', // blanco
+            '#C0C0C0', // gris claro
+            '#F5E1E0', // rosa pálido
+        ],
+        'gallery'     => [
+            'image/Rosas/Rosa1.jpg',
+            'image/Rosas/Rosa2.jpg',
+            'image/Rosas/Rosa3.jpg',
+        ],
         ],
         [
             'slug'  => 'ramo-de-rosas-coral-en-jarron',
@@ -34,6 +58,18 @@ class HomeController extends Controller
             'label' => 'Nuevo',
             'category' => 'rosas',
             'featured' => true,
+            'description' => 'Un hermoso ramo de rosas rosadas frescas en jarrón de cerámica blanca.',
+            'colors'      => [
+            '#000000', // negro
+            '#FFFFFF', // blanco
+            '#C0C0C0', // gris claro
+            '#F5E1E0', // rosa pálido
+        ],
+        'gallery'     => [
+            'image/Rosas/Rosa1.jpg',
+            'image/Rosas/Rosa2.jpg',
+            'image/Rosas/Rosa3.jpg',
+        ],
         ],
         [
             'slug'  => 'ramo-mixto-de-rosas-blancas-y-rosadas',
@@ -43,6 +79,18 @@ class HomeController extends Controller
             'label' => 'Nuevo',
             'category' => 'rosas',
             'featured' => true,
+            'description' => 'Un hermoso ramo de rosas rosadas frescas en jarrón de cerámica blanca.',
+            'colors'      => [
+            '#000000', // negro
+            '#FFFFFF', // blanco
+            '#C0C0C0', // gris claro
+            '#F5E1E0', // rosa pálido
+        ],
+        'gallery'     => [
+            'image/Rosas/Rosa1.jpg',
+            'image/Rosas/Rosa2.jpg',
+            'image/Rosas/Rosa3.jpg',
+        ],
         ],
         [
             'slug'  => 'ramo-de-rosas-rosadas',
@@ -52,6 +100,18 @@ class HomeController extends Controller
             'label' => 'Nuevo',
             'category' => 'rosas',
             'featured' => true,
+            'description' => 'Un hermoso ramo de rosas rosadas frescas en jarrón de cerámica blanca.',
+            'colors'      => [
+            '#000000', // negro
+            '#FFFFFF', // blanco
+            '#C0C0C0', // gris claro
+            '#F5E1E0', // rosa pálido
+        ],
+        'gallery'     => [
+            'image/Rosas/Rosa1.jpg',
+            'image/Rosas/Rosa2.jpg',
+            'image/Rosas/Rosa3.jpg',
+        ],
         ],
         [
             'slug'  => 'ramo-de-rosas-rojas-clasicas',
@@ -61,55 +121,79 @@ class HomeController extends Controller
             'label' => 'Nuevo',
             'category' => 'tulipanes',
             'featured' => true,
+            'description' => 'Un hermoso ramo de rosas rosadas frescas en jarrón de cerámica blanca.',
+            'colors'      => [
+            '#000000', // negro
+            '#FFFFFF', // blanco
+            '#C0C0C0', // gris claro
+            '#F5E1E0', // rosa pálido
+        ],
+        'gallery'     => [
+            'image/Rosas/Rosa1.jpg',
+            'image/Rosas/Rosa2.jpg',
+            'image/Rosas/Rosa3.jpg',
+        ],
         ],
     ];
 
     // Página principal con productos destacados
     public function index()
-{
-    $featured = collect($this->products)
-                 ->where('featured', true)
-                 ->values();
+    {
+        $featured = collect($this->products)
+            ->where('featured', true)
+            ->values();
 
-    return view('welcome', compact('featured'));
-}
+        return view('welcome', compact('featured'));
+    }
+    public function catalogo(Request $request)
+    {
+        $categoria = strtolower($request->input('categoria', ''));
+        $busqueda  = strtolower($request->input('busqueda', ''));
 
+        $productos = collect($this->products)
+            // si hay categoría, filtra exacto por campo category
+            ->when(
+                $categoria,
+                fn($col) =>
+                $col->where('category', $categoria)
+            )
+            // si hay texto, filtra que el nombre lo contenga
+            ->when(
+                $busqueda,
+                fn($col) =>
+                $col->filter(
+                    fn($p) =>
+                    str_contains(strtolower($p['name']), $busqueda)
+                )
+            )
+            ->values();
 
-    // Página individual de cada producto
+        return view('catalogo.catalogo', [
+            'productos'       => $productos,
+            'categoriaActiva' => $categoria ?: 'Todos',
+            'busquedaActual'  => $busqueda,
+        ]);
+    }
     public function showProduct($slug)
     {
         $product = collect($this->products)->firstWhere('slug', $slug);
-
-        if (!$product) {
+        if (! $product) {
             abort(404);
         }
 
-        return view('Producto.producto', compact('product'));
+        // Galería: si no tienes array, usa la imagen principal
+        $gallery = $product['gallery'] ?? [$product['image']];
+
+        // Productos similares
+        $related = collect($this->products)
+            ->where('category', $product['category'])
+            ->where('slug', '!=', $slug)
+            ->take(3)
+            ->all();
+
+        return view('Producto.producto', [
+            'product' => array_merge($product, ['gallery' => $gallery]),
+            'related' => $related,
+        ]);
     }
-    
-    public function catalogo(Request $request)
-{
-    $categoria = strtolower($request->input('categoria',''));
-    $busqueda  = strtolower($request->input('busqueda',''));
-
-    $productos = collect($this->products)
-        // si hay categoría, filtra exacto por campo category
-        ->when($categoria, fn($col) =>
-            $col->where('category', $categoria)
-        )
-        // si hay texto, filtra que el nombre lo contenga
-        ->when($busqueda, fn($col) =>
-            $col->filter(fn($p) =>
-                str_contains(strtolower($p['name']), $busqueda)
-            )
-        )
-        ->values();
-
-    return view('catalogo.catalogo', [
-        'productos'       => $productos,
-        'categoriaActiva' => $categoria ?: 'Todos',
-        'busquedaActual'  => $busqueda,
-    ]);
-}
-
 }

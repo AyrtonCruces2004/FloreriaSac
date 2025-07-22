@@ -7,6 +7,6 @@ use App\Http\Controllers\HomeController;
 Route::get('/', [HomeController::class, 'index']);
 
 // Página de detalle de producto
-Route::get('/producto/{slug}', [HomeController::class, 'showProduct']);
-
+Route::get('/producto/{slug}', [HomeController::class, 'showProduct'])
+     ->name('producto.show');
 Route::get('/catalogo', [HomeController::class, 'catalogo'])->name('catalogo');

@@ -14,7 +14,7 @@
 
   <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
   @vite(['resources/css/app.css', 'resources/js/app.js'])
-  <style>
+<style>
         @font-face {
       font-family: 'Libre Baskerville';
       font-style: italic;
@@ -51,169 +51,170 @@
 </head>
 
 <body class="bg-white">
-  <!-- HEADER -->
-   <header class="bg-white shadow-md sticky top-0 z-20">
-    <div class="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex items-center justify-between h-16">
-        <a href="{{ url('/') }}" class="flex items-center space-x-2">
-          <div class="w-8 h-8 bg-black rounded-full"></div>
-          <span class="text-black font-['Libre_Baskerville'] hover:text-[#D4AF37] transition duration-450">Florería</span>
-        </a>
-        <nav class="flex items-center gap-16 font-normal">
-          <div class="flex gap-12 text-xs">
-            <a href="{{ url('/') }}" class="text-black hover:text-[#D4AF37] uppercase tracking-wide font-['Libre_Baskerville'] transition duration-450">Inicio</a>
-            <a href="{{ url('/catalogo') }}" class="text-black hover:text-[#D4AF37] uppercase tracking-wide font-['Libre_Baskerville'] transition duration-450">Catálogo</a>
-            <a href="{{ url('/contacto') }}" class="text-black hover:text-[#D4AF37] uppercase tracking-wide font-['Libre_Baskerville'] transition duration-450">Contacto</a>
-            <a href="{{ url('/sobre-nosotros') }}" class="text-black hover:text-[#D4AF37] uppercase tracking-wide font-['Libre_Baskerville'] transition duration-450">Sobre Nosotros</a>
-          </div>
-          <div class="flex gap-10">
-            <a href="{{ url('/carrito') }}" class="text-black hover:text-[#D4AF37] transition duration-450">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                  d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2 9m5-9v9m4-9v9m4-9l2 9" />
-              </svg>
-            </a>
-            <a href="{{ url('/perfil') }}" class="text-black hover:text-[#D4AF37] transition duration-450">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                  d="M5.121 17.804A9 9 0 1118.879 6.196 9 9 0 015.12 17.804z" />
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                  d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-              </svg>
-            </a>
-          </div>
-        </nav>
-      </div>
-    </div>
-  </header>
-  <section class="bg-gray-800">
-    <div class="container mx-auto px-6 py-16 lg:flex lg:items-center lg:gap-12">
-
-      {{-- Texto --}}
-      <div class="lg:w-1/2">
-        <h1 class="text-white font-semibold uppercase tracking-wide font-['Libre_Baskerville']">Bienvenido a Nuestra Florería</h1>
-        <p class="mt-6 text-gray-300 tracking-wide font-['Libre_Baskerville']">Elige entre una variedad de flores frescas y hermosas.</p>
-        <a href="{{ url('/catalogo') }}"
-          class="group relative inline-block mt-15 overflow-hidden px-6 py-3 rounded-lg bg-black text-white font-['Libre_Baskerville'] transition-all duration-500">
-          <span class="absolute inset-0 w-full h-full bg-white translate-x-full group-hover:translate-x-0 transition-transform duration-500 ease-out"></span>
-          <span class="relative z-10 group-hover:text-black transition-colors duration-500">Ver Catálogo</span>
-        </a>
-
-      </div>
-
-      {{-- Slider 1 con efecto de fade --}}
-      <div class="lg:w-1/2 mt-10 lg:mt-0 relative overflow-hidden px-4 md:px-0">
-        <div class="relative w-full h-80 rounded-3xl overflow-hidden shadow-lg">
-          <div id="fade-slider" class="relative w-full h-full">
-            <img src="{{ asset('img/Flor1.png') }}" class="fade-slide absolute inset-0 w-full h-full object-cover rounded-3xl opacity-100 transition-opacity duration-1500" alt="Flor 1">
-            <img src="{{ asset('img/Flor2.jpg') }}" class="fade-slide absolute inset-0 w-full h-full object-cover rounded-3xl opacity-0 transition-opacity duration-1500" alt="Flor 2">
-            <img src="{{ asset('img/Flor3.jpg') }}" class="fade-slide absolute inset-0 w-full h-full object-cover rounded-3xl opacity-0 transition-opacity duration-1500" alt="Flor 3">
-          </div>
-
-          {{-- Bullets --}}
-          <div class="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-3 z-10">
-            <button onclick="goToFadeSlide(0)" class="w-3 h-3 rounded-full bg-white/50 hover:bg-white transition"></button>
-            <button onclick="goToFadeSlide(1)" class="w-3 h-3 rounded-full bg-white/50 hover:bg-white transition"></button>
-            <button onclick="goToFadeSlide(2)" class="w-3 h-3 rounded-full bg-white/50 hover:bg-white transition"></button>
-          </div>
+  <div id="scroll-container">
+    <!-- HEADER -->
+    <header class="bg-white shadow-md sticky top-0 z-20">
+      <div class="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between h-16">
+          <a href="{{ url('/') }}" class="flex items-center space-x-2">
+            <div class="w-8 h-8 bg-black rounded-full"></div>
+            <span class="text-black font-['Libre_Baskerville'] hover:text-[#D4AF37] transition duration-450">Florería</span>
+          </a>
+          <nav class="flex items-center gap-16 font-normal">
+            <div class="flex gap-12 text-xs">
+              <a href="{{ url('/') }}" class="text-black hover:text-[#D4AF37] uppercase tracking-wide font-['Libre_Baskerville'] transition duration-450">Inicio</a>
+              <a href="{{ url('/catalogo') }}" class="text-black hover:text-[#D4AF37] uppercase tracking-wide font-['Libre_Baskerville'] transition duration-450">Catálogo</a>
+              <a href="{{ url('/contacto') }}" class="text-black hover:text-[#D4AF37] uppercase tracking-wide font-['Libre_Baskerville'] transition duration-450">Contacto</a>
+              <a href="{{ url('/sobre-nosotros') }}" class="text-black hover:text-[#D4AF37] uppercase tracking-wide font-['Libre_Baskerville'] transition duration-450">Sobre Nosotros</a>
+            </div>
+            <div class="flex gap-10">
+              <a href="{{ url('/carrito') }}" class="text-black hover:text-[#D4AF37] transition duration-450">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2 9m5-9v9m4-9v9m4-9l2 9" />
+                </svg>
+              </a>
+              <a href="{{ url('/perfil') }}" class="text-black hover:text-[#D4AF37] transition duration-450">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M5.121 17.804A9 9 0 1118.879 6.196 9 9 0 015.12 17.804z" />
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                </svg>
+              </a>
+            </div>
+          </nav>
         </div>
       </div>
+    </header>
+    <section class="bg-gray-800">
+      <div class="container mx-auto px-6 py-16 lg:flex lg:items-center lg:gap-12">
 
-      <script>
-        const slides1 = document.querySelectorAll('.fade-slide');
-        let currentFade1 = 0;
+        {{-- Texto --}}
+        <div class="lg:w-1/2">
+          <h1 class="text-white font-semibold uppercase tracking-wide font-['Libre_Baskerville']">Bienvenido a Nuestra Florería</h1>
+          <p class="mt-6 text-gray-300 tracking-wide font-['Libre_Baskerville']">Elige entre una variedad de flores frescas y hermosas.</p>
+          <a href="{{ url('/catalogo') }}"
+            class="group relative inline-block mt-15 overflow-hidden px-6 py-3 rounded-lg bg-black text-white font-['Libre_Baskerville'] transition-all duration-500">
+            <span class="absolute inset-0 w-full h-full bg-white translate-x-full group-hover:translate-x-0 transition-transform duration-500 ease-out"></span>
+            <span class="relative z-10 group-hover:text-black transition-colors duration-500">Ver Catálogo</span>
+          </a>
 
-        function showSlide1(index) {
-          slides1.forEach((slide, i) => {
-            slide.classList.toggle('opacity-100', i === index);
-            slide.classList.toggle('opacity-0', i !== index);
-          });
-        }
+        </div>
 
-        function goToFadeSlide(index) {
-          currentFade1 = index;
-          showSlide1(currentFade1);
-        }
+        {{-- Slider 1 con efecto de fade --}}
+        <div class="lg:w-1/2 mt-10 lg:mt-0 relative overflow-hidden px-4 md:px-0">
+          <div class="relative w-full h-80 rounded-3xl overflow-hidden shadow-lg">
+            <div id="fade-slider" class="relative w-full h-full">
+              <img src="{{ asset('img/Flor1.png') }}" class="fade-slide absolute inset-0 w-full h-full object-cover rounded-3xl opacity-100 transition-opacity duration-1500" alt="Flor 1">
+              <img src="{{ asset('img/Flor2.jpg') }}" class="fade-slide absolute inset-0 w-full h-full object-cover rounded-3xl opacity-0 transition-opacity duration-1500" alt="Flor 2">
+              <img src="{{ asset('img/Flor3.jpg') }}" class="fade-slide absolute inset-0 w-full h-full object-cover rounded-3xl opacity-0 transition-opacity duration-1500" alt="Flor 3">
+            </div>
 
-        setInterval(() => {
-          currentFade1 = (currentFade1 + 1) % slides1.length;
-          showSlide1(currentFade1);
-        }, 5000);
-
-        showSlide1(0);
-      </script>
-
-  </section>
-
-
-
-  {{-- JS de Swiper --}}
-
-  {{-- En welcome.blade.php (o donde montes el home) --}}
-  <section class="py-16 bg-white">
-    <div class="max-w-7xl mx-auto px-6">
-      <!-- Título -->
-      <h2 class="text-3xl font-bold text-center mb-12 uppercase tracking-wide font-['Libre_Baskerville']">
-        Productos Destacados
-      </h2>
-
-      <!-- Grid -->
-      <div class="grid gap-8 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-        @foreach($featured as $product)
-        <a href="{{ url('/producto/' . $product['slug']) }}" class="group block shadow-md hover:shadow-xl transition rounded-2xl overflow-hidden bg-white border border-gray-200">
-
-          <!-- Imagen con etiqueta -->
-          <div class="relative h-64 w-full">
-            <img
-              src="{{ asset($product['image']) }}"
-              alt="{{ $product['name'] }}"
-              class="absolute inset-0 w-full h-full object-cover">
-            @if(!empty($product['label']))
-            <span class="absolute top-2 left-2 bg-white text-gray-800 text-xs font-semibold px-2 py-1 rounded z-10 shadow">
-              {{ $product['label'] }}
-            </span>
-            @endif
+            {{-- Bullets --}}
+            <div class="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-3 z-10">
+              <button onclick="goToFadeSlide(0)" class="w-3 h-3 rounded-full bg-white/50 hover:bg-white transition"></button>
+              <button onclick="goToFadeSlide(1)" class="w-3 h-3 rounded-full bg-white/50 hover:bg-white transition"></button>
+              <button onclick="goToFadeSlide(2)" class="w-3 h-3 rounded-full bg-white/50 hover:bg-white transition"></button>
+            </div>
           </div>
+        </div>
 
-          <!-- Info del producto -->
-          <div class="p-4">
-            <p class="text-gray-900 font-semibold text-lg">{{ $product['name'] }}</p>
-            <p class="mt-1 text-gray-600 text-sm">${{ $product['price'] }}</p>
-          </div>
-        </a>
-        @endforeach
+        <script>
+          const slides1 = document.querySelectorAll('.fade-slide');
+          let currentFade1 = 0;
+
+          function showSlide1(index) {
+            slides1.forEach((slide, i) => {
+              slide.classList.toggle('opacity-100', i === index);
+              slide.classList.toggle('opacity-0', i !== index);
+            });
+          }
+
+          function goToFadeSlide(index) {
+            currentFade1 = index;
+            showSlide1(currentFade1);
+          }
+
+          setInterval(() => {
+            currentFade1 = (currentFade1 + 1) % slides1.length;
+            showSlide1(currentFade1);
+          }, 5000);
+
+          showSlide1(0);
+        </script>
+
+    </section>
+
+
+
+    {{-- JS de Swiper --}}
+
+    {{-- En welcome.blade.php (o donde montes el home) --}}
+    <section class="py-16 bg-white">
+      <div class="max-w-7xl mx-auto px-6">
+        <!-- Título -->
+        <h2 class="text-3xl font-bold text-center mb-12 uppercase tracking-wide font-['Libre_Baskerville']">
+          Productos Destacados
+        </h2>
+
+        <!-- Grid -->
+        <div class="grid gap-8 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+          @foreach($featured as $product)
+          <a href="{{ url('/producto/' . $product['slug']) }}" class="group block shadow-md hover:shadow-xl transition rounded-2xl overflow-hidden bg-white border border-gray-200">
+
+            <!-- Imagen con etiqueta -->
+            <div class="relative h-64 w-full">
+              <img
+                src="{{ asset($product['image']) }}"
+                alt="{{ $product['name'] }}"
+                class="absolute inset-0 w-full h-full object-cover">
+              @if(!empty($product['label']))
+              <span class="absolute top-2 left-2 bg-white text-gray-800 text-xs font-semibold px-2 py-1 rounded z-10 shadow">
+                {{ $product['label'] }}
+              </span>
+              @endif
+            </div>
+
+            <!-- Info del producto -->
+            <div class="p-4">
+              <p class="text-gray-900 font-semibold text-lg">{{ $product['name'] }}</p>
+              <p class="mt-1 text-gray-600 text-sm">${{ $product['price'] }}</p>
+            </div>
+          </a>
+          @endforeach
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
 
-  {{-- Inicialización de Swiper --}}
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      new Swiper('.featured-swiper', {
-        loop: true,
-        speed: 600,
-        slidesPerView: 1,
-        spaceBetween: 20,
-        pagination: {
-          el: '.swiper-pagination',
-          clickable: true,
-        },
-        navigation: {
-          nextEl: '.swiper-button-next',
-          prevEl: '.swiper-button-prev',
-        },
-        breakpoints: {
-          640: {
-            slidesPerView: 2
+    {{-- Inicialización de Swiper --}}
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        new Swiper('.featured-swiper', {
+          loop: true,
+          speed: 600,
+          slidesPerView: 1,
+          spaceBetween: 20,
+          pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
           },
-          1024: {
-            slidesPerView: 3
+          navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
           },
-        },
+          breakpoints: {
+            640: {
+              slidesPerView: 2
+            },
+            1024: {
+              slidesPerView: 3
+            },
+          },
+        });
       });
-    });
-  </script>
+    </script>
   </div>
   </div>
   </section>
@@ -272,36 +273,44 @@
 
   </section>
   <section class="py-16 bg-white">
-    <div class="container mx-auto px-4">
-      <h2 class="text-2xl text-center mb-12 uppercase font-['Libre_Baskerville']">Categorías</h2>
+  <div class="container mx-auto px-4">
+    <h2 class="text-2xl text-center mb-12 uppercase font-['Libre_Baskerville']">Categorías</h2>
 
-      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
-        <!-- Categoría: Rosas -->
-        <div class="text-center group cursor-pointer">
-          <div class="overflow-hidden rounded-xl shadow-lg">
-            <img src="{{ asset('image/Rosas/Rosa1.jpg') }}" alt="Rosas" class="w-full h-80 object-cover transform group-hover:scale-105 transition duration-300">
-          </div>
-          <p class="mt-4 text-lg tracking-wide uppercase font-['Libre_Baskerville']">rosas</p>
-        </div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
 
-        <!-- Categoría: Tulipanes -->
-        <div class="text-center group cursor-pointer">
-          <div class="overflow-hidden rounded-xl shadow-lg">
-            <img src="{{ asset('image/Tulipanes/Tuli1.jpg') }}" alt="Tulipanes" class="w-full h-80 object-cover transform group-hover:scale-105 transition duration-300">
-          </div>
-          <p class="mt-4 text-lg tracking-wide uppercase font-['Libre_Baskerville']">Tulipanes</p>
+      <!-- Categoría: Rosas -->
+      <a href="{{ route('catalogo', ['categoria' => 'rosas']) }}" class="block text-center group cursor-pointer">
+        <div class="overflow-hidden rounded-xl shadow-lg">
+          <img src="{{ asset('image/Rosas/Rosa1.jpg') }}"
+               alt="Rosas"
+               class="w-full h-80 object-cover transform group-hover:scale-105 transition duration-300">
         </div>
+        <p class="mt-4 text-lg tracking-wide uppercase font-['Libre_Baskerville']">rosas</p>
+      </a>
 
-        <!-- Categoría: Girasoles -->
-        <div class="text-center group cursor-pointer">
-          <div class="overflow-hidden rounded-xl shadow-lg">
-            <img src="{{ asset('image/girasoles/gira1.jpg') }}" alt="Girasoles" class="w-full h-80 object-cover transform group-hover:scale-105 transition duration-300">
-          </div>
-          <p class="mt-4 text-lg tracking-wide uppercase font-['Libre_Baskerville']">Girasoles</p>
+      <!-- Categoría: Tulipanes -->
+      <a href="{{ route('catalogo', ['categoria' => 'tulipanes']) }}" class="block text-center group cursor-pointer">
+        <div class="overflow-hidden rounded-xl shadow-lg">
+          <img src="{{ asset('image/Tulipanes/Tuli1.jpg') }}"
+               alt="Tulipanes"
+               class="w-full h-80 object-cover transform group-hover:scale-105 transition duration-300">
         </div>
-      </div>
+        <p class="mt-4 text-lg tracking-wide uppercase font-['Libre_Baskerville']">tulipanes</p>
+      </a>
+
+      <!-- Categoría: Girasoles -->
+      <a href="{{ route('catalogo', ['categoria' => 'girasoles']) }}" class="block text-center group cursor-pointer">
+        <div class="overflow-hidden rounded-xl shadow-lg">
+          <img src="{{ asset('image/girasoles/gira1.jpg') }}"
+               alt="Girasoles"
+               class="w-full h-80 object-cover transform group-hover:scale-105 transition duration-300">
+        </div>
+        <p class="mt-4 text-lg tracking-wide uppercase font-['Libre_Baskerville']">girasoles</p>
+      </a>
+
     </div>
-  </section>
+  </div>
+</section>
   <hr class="border-t border-gray-300 my-1">
   <section class="bg-white py-20 px-6">
     <h2 class="text-2xl text-center mb-12 font-['Libre_Baskerville']">CONTACTANOS</h2>
@@ -354,134 +363,148 @@
     </form>
   </section>
   <section id="Reseñas" class="pt-12 pb-20 bg-[#f9f9f9] font-['Libre_Baskerville'] overflow-visible">
-  <div class="max-w-4xl mx-auto px-4 text-center mb-8">
-    <h2 class="text-3xl text-gray-800 uppercase">Opiniones de Clientes</h2>
-  </div>
+    <div class="max-w-4xl mx-auto px-4 text-center mb-8">
+      <h2 class="text-3xl text-gray-800 uppercase">Opiniones de Clientes</h2>
+    </div>
 
-  <div class="swiper reviews-swiper overflow-visible">
-    <div class="swiper-wrapper">
-      <!-- Testimonio 1 -->
-      <div class="swiper-slide flex justify-center">
-        <div class="testimonial-card bg-white rounded-2xl p-8 text-center">
-          <div class="text-2xl mb-4">★★★★★</div>
-          <p class="text-gray-700 mb-4 leading-tight">
-            Todo estuvo perfecto, la atención sin problemas y bastante rápida.
-          </p>
-          <p class="font-semibold text-gray-900">L. Gamonal</p>
-          <p class="text-sm text-gray-500">Hace 1 año</p>
+    <div class="swiper reviews-swiper overflow-visible">
+      <div class="swiper-wrapper">
+        <!-- Testimonio 1 -->
+        <div class="swiper-slide flex justify-center">
+          <div class="testimonial-card bg-white rounded-2xl p-8 text-center">
+            <div class="text-2xl mb-4">★★★★★</div>
+            <p class="text-gray-700 mb-4 leading-tight ">
+              Todo estuvo perfecto, la atención sin problemas y bastante rápida.
+            </p>
+            <p class="font-semibold text-gray-900 ">L. Gamonal</p>
+            <p class="text-sm text-gray-500">Hace 1 año</p>
+          </div>
         </div>
-      </div>
-      <!-- Testimonio 2 -->
-      <div class="swiper-slide flex justify-center">
-        <div class="testimonial-card bg-white rounded-2xl p-8 text-center">
-          <div class="text-2xl mb-4">★★★★★</div>
-          <p class="text-gray-700 mb-4 leading-tight">
-            Me encantan sus arreglos. Románticos y modernos con full detalles.
-          </p>
-          <p class="font-semibold text-gray-900">J. Prado</p>
-          <p class="text-sm text-gray-500">Hace 6 meses</p>
+        <!-- Testimonio 2 -->
+        <div class="swiper-slide flex justify-center">
+          <div class="testimonial-card bg-white rounded-2xl p-8 text-center">
+            <div class="text-2xl mb-4">★★★★★</div>
+            <p class="text-gray-700 mb-4 leading-tight">
+              Me encantan sus arreglos. Románticos y modernos con full detalles.
+            </p>
+            <p class="font-semibold text-gray-900">J. Prado</p>
+            <p class="text-sm text-gray-500">Hace 6 meses</p>
+          </div>
         </div>
-      </div>
-      <!-- Testimonio 3 -->
-      <div class="swiper-slide flex justify-center">
-        <div class="testimonial-card bg-white rounded-2xl p-8 text-center">
-          <div class="text-2xl mb-4">★★★★★</div>
-          <p class="text-gray-700 mb-4 leading-tight">
-            Muy buen servicio y arreglos de buena calidad. ¡A mi esposa le encantó!
-          </p>
-          <p class="font-semibold text-gray-900">J. Ravelo</p>
-          <p class="text-sm text-gray-500">Hace 6 meses</p>
-        </div>
-      </div>
-      <div class="swiper-slide flex justify-center">
-        <div class="testimonial-card bg-white rounded-2xl p-8 text-center">
-          <div class="text-2xl mb-4">★★★★★</div>
-          <p class="text-gray-700 mb-4 leading-tight">
-            Muy buen servicio y arreglos de buena calidad. ¡A mi esposa le encantó!
-          </p>
-          <p class="font-semibold text-gray-900">J. Ravelo</p>
-          <p class="text-sm text-gray-500">Hace 6 meses</p>
+        <!-- Testimonio 3 -->
+        <div class="swiper-slide flex justify-center">
+          <div class="testimonial-card bg-white rounded-2xl p-8 text-center">
+            <div class="text-2xl mb-4">★★★★★</div>
+            <p class="text-gray-700 mb-4 leading-tight">
+              Muy buen servicio y arreglos de buena calidad. ¡A mi esposa le encantó!
+            </p>
+            <p class="font-semibold text-gray-900">J. Ravelo</p>
+            <p class="text-sm text-gray-500">Hace 6 meses</p>
+          </div>
         </div>
       </div>
     </div>
-    
+
 
     <!-- bullets grises -->
-    <div class="swiper-pagination mt-6"></div>
-  </div>
-</section>
 
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    new Swiper('.reviews-swiper', {
-      loop: true,
-      centeredSlides: true,
-      initialSlide: 2,        // <— aquí le decimos que inicie en el slide índice 1
-      slidesPerView: 'auto',
-      spaceBetween: 80,
-      pagination: {
-        el: '.swiper-pagination',
-        clickable: true,
-        dynamicBullets: true
-      },
-      autoplay: {
-        delay: 5000,
-        disableOnInteraction: false
-      },
-      breakpoints: {
-        640:  { spaceBetween: 60 },
-        1024: { spaceBetween: 100 }
-      }
+    </div>
+  </section>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const swiper = new Swiper('.reviews-swiper', {
+        loop: true,
+        centeredSlides: true,
+        slidesPerView: 'auto',
+        spaceBetween: 80,
+        pagination: {
+          el: '.swiper-pagination',
+          clickable: true,
+          dynamicBullets: true
+        },
+        autoplay: {
+          delay: 5000,
+          disableOnInteraction: false
+        },
+        navigation: {
+          prevEl: '.swiper-button-prev',
+          nextEl: '.swiper-button-next'
+        },
+        breakpoints: {
+          640: {
+            spaceBetween: 60
+          },
+          1024: {
+            spaceBetween: 100
+          }
+        },
+        on: {
+          init() {
+            // ► Aquí elegimos manualmente qué slide original queremos ver en el centro al cargar.
+            //    Si quieres que sea el Testimonio 1 (L. Gamonal) usa index 0,
+            //    para el Testimonio 2 (J. Prado) index 1, etc.
+            this.slideToLoop(0, 0);
+          }
+        }
+      });
     });
-  });
-</script>
+  </script>
 
 
-<style>
-  /* padding lateral para que nunca queden cards pegadas al viewport */
-  .reviews-swiper { padding: 0 2rem; }
+  <style>
+    /* padding lateral para respirar */
+    .reviews-swiper {
+      padding: 0 2rem;
+    }
 
-  /* cada slide más ancho: 360px */
-  .reviews-swiper .swiper-slide {
-    width: 600px !important;
-  }
+    /* cada slide más ancho */
+    .reviews-swiper .swiper-slide {
+      width: 600px !important;
+    }
 
-  /* tarjeta base reducida + margen inferior extra para la sombra */
-  .testimonial-card {
-    transform: scale(0.85);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.08);
-    margin-bottom: 5rem;
-  }
+    /* estilo base de la card */
+    .testimonial-card {
+      transform: scale(0.85);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+      margin-bottom: 5rem;
+    }
 
-  /* tarjeta central destacada */
-  .swiper-slide-active .testimonial-card {
-    transform: scale(1);
-    box-shadow: 0 30px 60px rgba(0,0,0,0.15);
-    z-index: 10;
-  }
+    /* la card activa */
+    .swiper-slide-active .testimonial-card {
+      transform: scale(1);
+      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.15);
+      z-index: 10;
+    }
 
-  /* bullets grises */
-  .swiper-pagination-bullet {
-    width: 10px;
-    height: 10px;
-    background-color: #ccc !important;
-    opacity: 1;
-    margin: 0 6px !important;
-    transition: all 0.3s ease;
-  }
-  .swiper-pagination-bullet-active {
-    width: 12px;
-    height: 12px;
-    background-color: #888 !important;
-  }
-</style>
+    /* bullets grises */
+    .swiper-pagination-bullet {
+      width: 10px;
+      height: 10px;
+      background-color: #ccc !important;
+      opacity: 1;
+      margin: 0 6px !important;
+      transition: all 0.3s ease;
+    }
 
+    .swiper-pagination-bullet-active {
+      width: 12px;
+      height: 12px;
+      background-color: #888 !important;
+    }
 
-
-  
-
-
+    /* opcional: estilo de flechas por si quieres personalizar */
+    .swiper-button-prev,
+    .swiper-button-next {
+      color: #444;
+      width: 2.5rem;
+      height: 2.5rem;
+      background: #fff;
+      border-radius: 9999px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+  </style>
   <hr class="border-t border-gray-300 my-20">
   <footer class="bg-white text-black font-['Libre_Baskerville'] px-6 py-12">
     <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-10 text-sm">
@@ -534,13 +557,7 @@
       © 2025 Jose Ayrton Calderon Cruces Todos los derechos reservados. Uwu
     </div>
   </footer>
-
-  <!-- CONTENIDO -->
-  <main>
-    @yield('content')
-  </main>
-
-  <!-- SCRIPTS -->
+  </div>
 </body>
 
 </html>

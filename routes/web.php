@@ -10,3 +10,6 @@ Route::get('/', [HomeController::class, 'index']);
 Route::get('/producto/{slug}', [HomeController::class, 'showProduct'])
      ->name('producto.show');
 Route::get('/catalogo', [HomeController::class, 'catalogo'])->name('catalogo');
+// Catálogo
+// Renderiza directamente la vista contacto/contacto.blade.php al visitar /contacto
+Route::view('/contacto', 'contacto.contacto')->name('contacto');

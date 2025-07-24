@@ -64,7 +64,12 @@
             <div class="flex gap-12 text-xs">
               <a href="{{ url('/') }}" class="text-black hover:text-[#D4AF37] uppercase tracking-wide font-['Libre_Baskerville'] transition duration-450">Inicio</a>
               <a href="{{ url('/catalogo') }}" class="text-black hover:text-[#D4AF37] uppercase tracking-wide font-['Libre_Baskerville'] transition duration-450">Catálogo</a>
-              <a href="{{ url('/contacto') }}" class="text-black hover:text-[#D4AF37] uppercase tracking-wide font-['Libre_Baskerville'] transition duration-450">Contacto</a>
+              <a href="{{ route('contacto') }}"
+   class="text-black hover:text-[#D4AF37] uppercase tracking-wide font-['Libre_Baskerville'] transition duration-300">
+  Contacto
+</a>
+
+
               <a href="{{ url('/sobre-nosotros') }}" class="text-black hover:text-[#D4AF37] uppercase tracking-wide font-['Libre_Baskerville'] transition duration-450">Sobre Nosotros</a>
             </div>
             <div class="flex gap-10">
@@ -354,12 +359,21 @@
 
       <!-- Botón Enviar -->
       <div class="md:col-span-3 flex justify-center mt-6">
-        <button class="relative overflow-hidden bg-black text-white font-semibold px-8 py-3 rounded-md group">
-          <span class="absolute inset-0 bg-white translate-x-full group-hover:translate-x-0 transition-transform duration-500 ease-in-out"></span>
-          <span class="relative z-10 group-hover:text-black transition duration-300">Enviar</span>
-        </button>
+  <button
+    class="relative overflow-hidden bg-gray text-black font-semibold px-8 py-3 rounded-md group
+           border border-gray-400"
+  >
+    <span
+      class="absolute inset-0 bg-gray-200 translate-x-full
+             group-hover:translate-x-0 transition-transform duration-500 ease-in-out"
+    ></span>
+    <span class="relative z-10 group-hover:text-black transition duration-300">
+      Enviar
+    </span>
+  </button>
+</div>
 
-      </div>
+
     </form>
   </section>
   <section id="Reseñas" class="pt-12 pb-20 bg-[#f9f9f9] font-['Libre_Baskerville'] overflow-visible">

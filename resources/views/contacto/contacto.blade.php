@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>{{ $product['name'] }}</title>
+  <title>contacto</title>
   <link rel="preconnect" href="https://fonts.bunny.net">
   <link href="https://fonts.bunny.net/css?family=instrument-sans:400,500,600" rel="stylesheet" />
   <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
@@ -58,7 +58,7 @@
           <div class="flex gap-12 text-xs">
             <a href="{{ url('/') }}" class="text-black hover:text-[#D4AF37] uppercase tracking-wide font-['Libre_Baskerville'] transition duration-450">Inicio</a>
             <a href="{{ url('/catalogo') }}" class="text-black hover:text-[#D4AF37] uppercase tracking-wide font-['Libre_Baskerville'] transition duration-450">Catálogo</a>
-            <a href="{{ url('/contactanos.blade.php') }}" class="text-black hover:text-[#D4AF37] uppercase tracking-wide font-['Libre_Baskerville'] transition duration-450">Contacto</a>
+            <a href="{{ url('/contacto') }}" class="text-black hover:text-[#D4AF37] uppercase tracking-wide font-['Libre_Baskerville'] transition duration-450">Contacto</a>
             <a href="{{ url('/sobre-nosotros') }}" class="text-black hover:text-[#D4AF37] uppercase tracking-wide font-['Libre_Baskerville'] transition duration-450">Sobre Nosotros</a>
           </div>
           <div class="flex gap-10">
@@ -81,123 +81,140 @@
       </div>
     </div>
   </header>
-  <div class="max-w-6xl mx-auto p-8 grid grid-cols-1 lg:grid-cols-2 gap-12">
+  
+  <section class="bg-white">
+    <div class="max-w-full mx-auto">
+      <div class="relative w-full max-w-full mx-auto mt-0 overflow-hidden h-[600px]">
+        <div class="relative w-full h-full overflow-hidden" id="fade-carousel-2">
+          <img src="{{ asset('img/flor1.png') }}" alt="Flor 1" class="fade-slide-2 absolute inset-0 w-full h-full object-cover  opacity-100 transition-opacity duration-1500">
+          <img src="{{ asset('img/flor2.jpg') }}" alt="Flor 2" class="fade-slide-2 absolute inset-0 w-full h-full object-cover  opacity-0 transition-opacity duration-1500">
+          <img src="{{ asset('img/flor3.jpg') }}" alt="Flor 3" class="fade-slide-2 absolute inset-0 w-full h-full object-cover  opacity-0 transition-opacity duration-1500">
+        </div>
 
-  {{-- Columna izquierda: miniaturas + imagen principal --}}
-  <div class="flex flex-col lg:flex-row lg:space-x-8">
-    {{-- Miniaturas verticales --}}
-    <div class="hidden lg:flex flex-col space-y-4">
-      @foreach($product['gallery'] as $img)
-        <img
-          src="{{ asset($img) }}"
-          alt="Miniatura"
-          class="w-20 h-20 object-cover rounded-lg cursor-pointer border-2 border-gray-200 hover:border-gold transition"
-          onclick="document.getElementById('main-img').src='{{ asset($img) }}'"
-        />
-      @endforeach
+        <!-- Botones indicadores -->
+        <div class="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-3 z-10">
+          <button onclick="goToFade2(0)" class="w-3 h-3 rounded-full bg-black/50 hover:bg-white transition duration-700"></button>
+          <button onclick="goToFade2(1)" class="w-3 h-3 rounded-full bg-black/50 hover:bg-white transition duration-700"></button>
+          <button onclick="goToFade2(2)" class="w-3 h-3 rounded-full bg-black/50 hover:bg-white transition duration-700"></button>
+        </div>
+      </div>
     </div>
+  </section>
+  <script>
+    const fadeSlides2 = document.querySelectorAll('.fade-slide-2');
+    let fadeIndex2 = 0;
 
-    {{-- Imagen grande --}}
-    <div class="flex-1">
-      <img
-        id="main-img"
-        src="{{ asset($product['gallery'][0] ?? $product['image']) }}"
-        alt="{{ $product['name'] }}"
-        class="w-full h-[500px] object-cover rounded-2xl shadow-lg"
-      />
-    </div>
+    function showFadeSlide2(index) {
+      fadeSlides2.forEach((img, i) => {
+        img.classList.toggle('opacity-100', i === index);
+        img.classList.toggle('opacity-0', i !== index);
+      });
+    }
+
+    function goToFade2(index) {
+      fadeIndex2 = index;
+      showFadeSlide2(fadeIndex2);
+    }
+
+    setInterval(() => {
+      fadeIndex2 = (fadeIndex2 + 1) % fadeSlides2.length;
+      showFadeSlide2(fadeIndex2);
+    }, 5000);
+
+    showFadeSlide2(0);
+  </script>
+<div class="bg-black text-white text-center py-2">
+    <span class="tracking-wide uppercase text-sm">
+        Contactate con nosotros.
+    </span>
   </div>
-
-  {{-- Columna derecha: detalles --}}
-  <div class="space-y-6">
-    <h1 class="text-2xl font-bold font-['Libre_Baskerville']">{{ $product['name'] }}</h1>
-
-    <div >
-      <h2 class="text-lg font-['Libre_Baskerville'] mb-1">DESCRIPCIÓN</h2>
-      <p class="text-sm font-['Libre_Baskerville']">{{ $product['description'] }}</p>
-    </div>
-
-    <div class="space-y-2">
-      <h2 class="text-lg font-['Libre_Baskerville'] space-y-2">Precio y Stock</h2>
-      <p class="text-xl font-['Libre_Baskerville'] text-gray-900">${{ $product['price'] }}</p>
-      <p class="text-sm font-['Libre_Baskerville'] text-green-600">{{ $product['label'] > 0 ? 'En stock' : 'Agotado' }}</p>
-    </div>
-
+<section id="Contacto" class="py-16 bg-white text-black">
+  <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+    <!-- TEXTO + FORMULARIO -->
     <div>
-  <h2 class="text-lg font-['Libre_Baskerville'] mb-2">COLORES</h2>
-  <div class="flex items-center space-x-3">
-    @foreach($product['colors'] as $color)
-       <button
-        type="button"
-        style="--c: {{ $color }};"
-        class="
-          w-8 h-8 rounded-full border-2 border-gray-300
-          bg-[var(--c)]
-          transition transform hover:scale-110 hover:shadow-lg
-          focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#D4AF37]
-        "
-      ></button>
-    @endforeach
+      <h2 class="text-3xl font-semibold mb-4">Contáctenos</h2>
+      <p class="text-2xl font-bold mb-6">
+        Si tiene alguna consulta, póngase en contacto con nosotros.
+      </p>
+      <p class="mb-8 text-gray-700">
+        Llena el formulario y nos pondremos en contacto a la brevedad.
+      </p>
+      <form action="#" method="POST" class="space-y-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <input
+            type="text" name="name" placeholder="Su nombre"
+            class="w-full px-4 py-3 border-2 border-black rounded-lg focus:outline-none focus:ring-2 focus:ring-black"
+            required
+          />
+          <input
+            type="email" name="email" placeholder="Su correo electrónico"
+            class="w-full px-4 py-3 border-2 border-black rounded-lg focus:outline-none focus:ring-2 focus:ring-black"
+            required
+          />
+        </div>
+        <input
+          type="text" name="subject" placeholder="Asunto"
+          class="w-full px-4 py-3 border-2 border-black rounded-lg focus:outline-none focus:ring-2 focus:ring-black"
+        />
+        <textarea
+          name="message" rows="5" placeholder="Mensaje"
+          class="w-full px-4 py-3 border-2 border-black rounded-lg focus:outline-none focus:ring-2 focus:ring-black"
+        ></textarea>
+        <button
+          type="submit"
+          class="inline-block bg-black text-white uppercase tracking-wider font-medium px-6 py-3 rounded-lg hover:bg-gray-800 transition"
+        >
+          Enviar mensaje
+        </button>
+      </form>
+    </div>
+
+    <!-- MAPA -->
+    <div class="w-full h-80 lg:h-full">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1564.8902956322902!2d-77.02729923824936!3d-12.03804498817459!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9105cf41e6ed1dad%3A0xb30871711a844983!2zUsOtbWFj!5e0!3m2!1ses-419!2spe!4v1753332495688!5m2!1ses-419!2spe"
+        class="w-full h-full border-0 rounded-lg shadow-lg"
+        allowfullscreen="" loading="lazy"
+      ></iframe>
+    </div>
   </div>
-</div>
+</section>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<!-- SCROLL TO TOP BUTTON -->
+<button
+  id="scrollToTop"
+  class="fixed bottom-6 right-6 bg-black text-white p-3 rounded-full shadow-lg
+         opacity-0 pointer-events-none
+         transition-all duration-300 ease-in-out transform
+         hover:scale-110 hover:bg-gray-800
+         active:scale-125 focus:outline-none focus:ring-2 focus:ring-white/50"
+  aria-label="Subir arriba"
+>
+  <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
+       viewBox="0 0 24 24" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+          d="M5 15l7-7 7 7" />
+  </svg>
+</button>
 
-  {{-- Fecha --}}
-  <div class="relative">
-    <label for="fecha" class="block text-sm font-['Libre_Baskerville'] mb-1">Fecha de entrega</label>
-    <input
-      id="fecha"
-      type="date"
-      class="w-full border border-gray-300 rounded-lg px-3 py-2 pr-10 focus:border-black focus:ring-black transition"
-    />
-    <span class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
-      <!-- ícono calendario -->
-    </span>
-  </div>
+<script>
+  // SCROLL TO TOP
+const btn = document.getElementById('scrollToTop');
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 300) {
+    btn.classList.remove('opacity-0', 'pointer-events-none');
+    btn.classList.add('opacity-100');
+  } else {
+    btn.classList.add('opacity-0', 'pointer-events-none');
+    btn.classList.remove('opacity-100');
+  }
+});
+btn.addEventListener('click', () => {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+});
 
-  {{-- Hora --}}
-  <div class="relative">
-    <label for="horario" class="block text-sm font-['Libre_Baskerville'] mb-1">Horario</label>
-    <input
-      id="horario"
-      type="time"
-      disabled
-      class="w-full border border-gray-300 rounded-lg px-3 py-2 pr-10 bg-gray-100 text-gray-500 focus:border-black focus:ring-black transition"
-    />
-    <span id="ic-hora" class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
-      <!-- ícono reloj -->
-    </span>
-  </div>
-
-  {{-- Botón debajo, ocupando ambas columnas en md+ --}}
-  <div class="md:col-span-2">
-    <button
-      type="button"
-      class="group relative w-full overflow-hidden bg-black text-white font-['Libre_Baskerville'] text-sm uppercase tracking-widest py-3 rounded-4xl shadow-lg transition transform hover:scale-105 hover:shadow-2xl focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#D4AF37]"
-    >
-      <span class="absolute inset-0 bg-gradient-to-r from-transparent via-[#D4AF37]/30 to-transparent
-                   opacity-0 group-hover:opacity-100 transition-opacity duration-500"></span>
-      <span class="relative">Agregar al carrito</span>
-    </button>
-  </div>
-
-</div>
-
-<p class="mt-2 text-xs text-gray-600 font-['Libre_Baskerville']">
-  *Si deseas hora específica, primero elige la fecha y luego elige el horario.
-</p>
-
-<a href="{{ url('/') }}" class="inline-block mt-6 text-gray-500 hover:underline">
-  ← Volver al inicio
-</a>
-
-</div>
-  </div>
-
-</div>
-
-  <hr class="border-t border-gray-300 my-20">
+</script>
+<hr class="border-t border-gray-300 ">
   <footer class="bg-white text-black font-['Libre_Baskerville'] px-6 py-12">
     <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-10 text-sm">
 
@@ -249,6 +266,3 @@
       © 2025 Jose Ayrton Calderon Cruces Todos los derechos reservados. Uwu
     </div>
   </footer>
-</body>
-</head>
-</html>

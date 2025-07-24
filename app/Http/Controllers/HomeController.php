@@ -116,7 +116,7 @@ class HomeController extends Controller
         [
             'slug'  => 'ramo-de-rosas-rojas-clasicas',
             'image' => 'image/Tulipanes/Tuli1.jpg',    // rosas rojas intensas en vaso de cristal
-            'name'  => 'Ramo de Rosas Rojas Clásicas',
+            'name'  => 'Ramo de tulipanes Rojas Clásicas',
             'price' => '30.00',
             'label' => 'Nuevo',
             'category' => 'tulipanes',

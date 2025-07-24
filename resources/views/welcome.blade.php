@@ -47,8 +47,7 @@
             html {
             scroll-behavior: smooth;
             }
-        </style>
-</head>
+        </style></head>
 
 <body class="bg-white">
   <div id="scroll-container">
@@ -65,12 +64,11 @@
               <a href="{{ url('/') }}" class="text-black hover:text-[#D4AF37] uppercase tracking-wide font-['Libre_Baskerville'] transition duration-450">Inicio</a>
               <a href="{{ url('/catalogo') }}" class="text-black hover:text-[#D4AF37] uppercase tracking-wide font-['Libre_Baskerville'] transition duration-450">Catálogo</a>
               <a href="{{ route('contacto') }}"
-   class="text-black hover:text-[#D4AF37] uppercase tracking-wide font-['Libre_Baskerville'] transition duration-300">
-  Contacto
-</a>
-
-
-              <a href="{{ url('/sobre-nosotros') }}" class="text-black hover:text-[#D4AF37] uppercase tracking-wide font-['Libre_Baskerville'] transition duration-450">Sobre Nosotros</a>
+                class="text-black hover:text-[#D4AF37] uppercase tracking-wide font-['Libre_Baskerville'] transition duration-300">
+                Contacto
+              </a>
+              <a href="{{ route('nosotros') }}" class="text-black hover:text-[#D4AF37] uppercase tracking-wide font-['Libre_Baskerville'] transition duration-450">Sobre Nosotros
+              </a>
             </div>
             <div class="flex gap-10">
               <a href="{{ url('/carrito') }}" class="text-black hover:text-[#D4AF37] transition duration-450">
@@ -278,44 +276,44 @@
 
   </section>
   <section class="py-16 bg-white">
-  <div class="container mx-auto px-4">
-    <h2 class="text-2xl text-center mb-12 uppercase font-['Libre_Baskerville']">Categorías</h2>
+    <div class="container mx-auto px-4">
+      <h2 class="text-2xl text-center mb-12 uppercase font-['Libre_Baskerville']">Categorías</h2>
 
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
 
-      <!-- Categoría: Rosas -->
-      <a href="{{ route('catalogo', ['categoria' => 'rosas']) }}" class="block text-center group cursor-pointer">
-        <div class="overflow-hidden rounded-xl shadow-lg">
-          <img src="{{ asset('image/Rosas/Rosa1.jpg') }}"
-               alt="Rosas"
-               class="w-full h-80 object-cover transform group-hover:scale-105 transition duration-300">
-        </div>
-        <p class="mt-4 text-lg tracking-wide uppercase font-['Libre_Baskerville']">rosas</p>
-      </a>
+        <!-- Categoría: Rosas -->
+        <a href="{{ route('catalogo', ['categoria' => 'rosas']) }}" class="block text-center group cursor-pointer">
+          <div class="overflow-hidden rounded-xl shadow-lg">
+            <img src="{{ asset('image/Rosas/Rosa1.jpg') }}"
+              alt="Rosas"
+              class="w-full h-80 object-cover transform group-hover:scale-105 transition duration-300">
+          </div>
+          <p class="mt-4 text-lg tracking-wide uppercase font-['Libre_Baskerville']">rosas</p>
+        </a>
 
-      <!-- Categoría: Tulipanes -->
-      <a href="{{ route('catalogo', ['categoria' => 'tulipanes']) }}" class="block text-center group cursor-pointer">
-        <div class="overflow-hidden rounded-xl shadow-lg">
-          <img src="{{ asset('image/Tulipanes/Tuli1.jpg') }}"
-               alt="Tulipanes"
-               class="w-full h-80 object-cover transform group-hover:scale-105 transition duration-300">
-        </div>
-        <p class="mt-4 text-lg tracking-wide uppercase font-['Libre_Baskerville']">tulipanes</p>
-      </a>
+        <!-- Categoría: Tulipanes -->
+        <a href="{{ route('catalogo', ['categoria' => 'tulipanes']) }}" class="block text-center group cursor-pointer">
+          <div class="overflow-hidden rounded-xl shadow-lg">
+            <img src="{{ asset('image/Tulipanes/Tuli1.jpg') }}"
+              alt="Tulipanes"
+              class="w-full h-80 object-cover transform group-hover:scale-105 transition duration-300">
+          </div>
+          <p class="mt-4 text-lg tracking-wide uppercase font-['Libre_Baskerville']">tulipanes</p>
+        </a>
 
-      <!-- Categoría: Girasoles -->
-      <a href="{{ route('catalogo', ['categoria' => 'girasoles']) }}" class="block text-center group cursor-pointer">
-        <div class="overflow-hidden rounded-xl shadow-lg">
-          <img src="{{ asset('image/girasoles/gira1.jpg') }}"
-               alt="Girasoles"
-               class="w-full h-80 object-cover transform group-hover:scale-105 transition duration-300">
-        </div>
-        <p class="mt-4 text-lg tracking-wide uppercase font-['Libre_Baskerville']">girasoles</p>
-      </a>
+        <!-- Categoría: Girasoles -->
+        <a href="{{ route('catalogo', ['categoria' => 'girasoles']) }}" class="block text-center group cursor-pointer">
+          <div class="overflow-hidden rounded-xl shadow-lg">
+            <img src="{{ asset('image/girasoles/gira1.jpg') }}"
+              alt="Girasoles"
+              class="w-full h-80 object-cover transform group-hover:scale-105 transition duration-300">
+          </div>
+          <p class="mt-4 text-lg tracking-wide uppercase font-['Libre_Baskerville']">girasoles</p>
+        </a>
 
+      </div>
     </div>
-  </div>
-</section>
+  </section>
   <hr class="border-t border-gray-300 my-1">
   <section class="bg-white py-20 px-6">
     <h2 class="text-2xl text-center mb-12 font-['Libre_Baskerville']">CONTACTANOS</h2>
@@ -359,19 +357,17 @@
 
       <!-- Botón Enviar -->
       <div class="md:col-span-3 flex justify-center mt-6">
-  <button
-    class="relative overflow-hidden bg-gray text-black font-semibold px-8 py-3 rounded-md group
-           border border-gray-400"
-  >
-    <span
-      class="absolute inset-0 bg-gray-200 translate-x-full
-             group-hover:translate-x-0 transition-transform duration-500 ease-in-out"
-    ></span>
-    <span class="relative z-10 group-hover:text-black transition duration-300">
-      Enviar
-    </span>
-  </button>
-</div>
+        <button
+          class="relative overflow-hidden bg-gray text-black font-semibold px-8 py-3 rounded-md group
+           border border-gray-400">
+          <span
+            class="absolute inset-0 bg-gray-200 translate-x-full
+             group-hover:translate-x-0 transition-transform duration-500 ease-in-out"></span>
+          <span class="relative z-10 group-hover:text-black transition duration-300">
+            Enviar
+          </span>
+        </button>
+      </div>
 
 
     </form>

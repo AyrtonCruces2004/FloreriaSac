@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>contacto</title>
+  <title>nosotros</title>
   <link rel="preconnect" href="https://fonts.bunny.net">
   <link href="https://fonts.bunny.net/css?family=instrument-sans:400,500,600" rel="stylesheet" />
   <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
@@ -81,10 +81,9 @@
       </div>
     </div>
   </header>
-  
   <section class="bg-white">
     <div class="max-w-full mx-auto">
-      <div class="relative w-full max-w-full mx-auto mt-0 overflow-hidden h-[600px]">
+      <div class="relative w-full max-w-full mx-auto mt-0 overflow-hidden h-[400px]">
         <div class="relative w-full h-full overflow-hidden" id="fade-carousel-2">
           <img src="{{ asset('img/flor1.png') }}" alt="Flor 1" class="fade-slide-2 absolute inset-0 w-full h-full object-cover  opacity-100 transition-opacity duration-1500">
           <img src="{{ asset('img/flor2.jpg') }}" alt="Flor 2" class="fade-slide-2 absolute inset-0 w-full h-full object-cover  opacity-0 transition-opacity duration-1500">
@@ -124,63 +123,38 @@
     showFadeSlide2(0);
   </script>
 <div class="bg-black text-white text-center py-2">
-    <span class="tracking-wide uppercase text-sm ">
-        Contactate con nosotros.
+    <span class="tracking-wide uppercase text-sm">
+        Conoce un poco mas de nosotros.
     </span>
-  </div>
-<section id="Contacto" class="py-16 bg-white text-black">
-  <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
-    <!-- TEXTO + FORMULARIO -->
-    <div>
-      <h2 class="text-3xl font-['Libre_Baskerville'] mb-4">Contáctenos</h2>
-      <p class="text-2xl font-['Libre_Baskerville'] mb-6">
-        Si tiene alguna consulta, póngase en contacto con nosotros.
+</div>
+  <!-- SECCIÓN “¿QUIÉNES SOMOS?” -->
+ <section id="about" class="py-16 bg-white">
+  <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 px-4 items-center">
+    <!-- TEXTO -->
+    <div class="space-y-6">
+      <h2 class="text-3xl lg:text-4xl mb-6 font-['Libre_Baskerville'] leading-tight">
+        ¿Quiénes somos?
+      </h2>
+      <p class="text-gray-700 font-['Libre_Baskerville'] leading-loose">
+        En Florería Armonía, creemos que cada flor cuenta una historia y cada arreglo es una obra de arte. Desde nuestra fundación en 2010, nos hemos dedicado a traer la belleza natural a los hogares y eventos, con una pasión inquebrantable por la floricultura y el diseño floral.
       </p>
-      <p class="mb-8 font-['Libre_Baskerville'] text-gray-700 ">
-        Llena el formulario y nos pondremos en contacto a la brevedad.
+      <p class="text-gray-700 font-['Libre_Baskerville'] leading-loose">
+        Nuestra misión es superar las expectativas de nuestros clientes, no solo con flores frescas y de la más alta calidad, sino con un servicio personalizado que celebra cada momento especial. Trabajamos directamente con cultivadores locales e internacionales para asegurar la frescura y sostenibilidad de nuestros productos.
       </p>
-      <form action="#" method="POST" class="space-y-6">
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <input
-            type="text" name="name" placeholder="Su nombre"
-            class="w-full px-4 py-3 border-2 border-black rounded-lg focus:outline-none focus:ring-2 focus:ring-black"
-            required
-          />
-          <input
-            type="email" name="email" placeholder="Su correo electrónico"
-            class="w-full px-4 py-3 border-2 border-black rounded-lg focus:outline-none focus:ring-2 focus:ring-black"
-            required
-          />
-        </div>
-        <input
-          type="text" name="subject" placeholder="Asunto"
-          class="w-full px-4 py-3 border-2 border-black rounded-lg focus:outline-none focus:ring-2 focus:ring-black"
-        />
-        <textarea
-          name="message" rows="5" placeholder="Mensaje"
-          class="w-full px-4 py-3 border-2 border-black rounded-lg focus:outline-none focus:ring-2 focus:ring-black"
-        ></textarea>
-        <button
-          type="submit"
-          class="inline-block bg-black text-white uppercase tracking-wider font-medium px-6 py-3 rounded-lg hover:bg-gray-800 transition font-['Libre_Baskerville'] text-sm"
-        >
-          Enviar mensaje
-        </button>
-      </form>
+      <p class="text-gray-700 font-['Libre_Baskerville'] leading-loose">
+        Más allá de las flores, creamos experiencias. Cada pétalo, cada tallo, es elegido y dispuesto con amor y dedicación para transmitir el mensaje perfecto. Con Florería Armonía, usted no solo envía flores, envía emociones.
+      </p>
     </div>
 
-    <!-- MAPA -->
-    <div class="w-full h-80 lg:h-full">
-      <iframe
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1564.8902956322902!2d-77.02729923824936!3d-12.03804498817459!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9105cf41e6ed1dad%3A0xb30871711a844983!2zUsOtbWFj!5e0!3m2!1ses-419!2spe!4v1753332495688!5m2!1ses-419!2spe"
-        class="w-full h-full border-0 rounded-lg shadow-lg"
-        allowfullscreen="" loading="lazy"
-      ></iframe>
+    <!-- IMAGEN -->
+    <div class="flex justify-center">
+      <img src="{{ asset('img/Suku.jpeg') }}"
+           alt="Nuestro equipo"
+           class="rounded-2xl shadow-lg object-cover w-full max-w-md" />
     </div>
   </div>
 </section>
 
-<!-- SCROLL TO TOP BUTTON -->
 <button
   id="scrollToTop"
   class="fixed bottom-6 right-6 bg-black text-white p-3 rounded-full shadow-lg
@@ -196,7 +170,6 @@
           d="M5 15l7-7 7 7" />
   </svg>
 </button>
-
 <script>
   // SCROLL TO TOP
 const btn = document.getElementById('scrollToTop');
@@ -214,7 +187,96 @@ btn.addEventListener('click', () => {
 });
 
 </script>
-<hr class="border-t border-gray-300 ">
+    <section id="pilares" class="pt-12 pb-20 bg-[#f9f9f9] font-['Libre_Baskerville'] overflow-visible">
+  <div class="max-w-4xl mx-auto px-4 text-center mb-8">
+    <h2 class="text-3xl text-gray-800 uppercase">Nuestros Pilares</h2>
+  </div>
+
+  <div class="relative">
+    <!-- Slider -->
+    <div class="swiper pilares-swiper overflow-visible">
+      <div class="swiper-wrapper">
+        <!-- Pilar 1 -->
+        <div class="swiper-slide flex justify-center">
+          <div class="bg-white rounded-3xl p-8 text-center shadow-lg max-w-sm">
+            <h3 class="flex items-center justify-center text-2xl font-['Libre_Baskerville'] mb-4">
+              <span class="text-indigo-500 mr-2 "></span> Nuestra Visión
+            </h3>
+            <p class="text-gray-700 leading-relaxed ">
+              Más allá de las flores, creamos experiencias. Cada pétalo, cada tallo, es elegido y dispuesto con amor y dedicación para transmitir el mensaje perfecto, sea cual sea la ocasión. Con Florería Armonía, usted no solo envía flores, envía emociones.
+            </p>
+          </div>
+        </div>
+
+        <!-- Pilar 2 -->
+        <div class="swiper-slide flex justify-center">
+          <div class="bg-white rounded-2xl p-8 text-center shadow-lg max-w-sm">
+            <h3 class="flex items-center justify-center text-2xl font-semibold mb-4">
+              <span class="text-indigo-500 mr-2"></span> Nuestra Misión
+            </h3>
+            <p class="text-gray-700 leading-relaxed">
+              Crear y entregar arreglos florales excepcionales y personalizados que inspiren alegría, celebren momentos y expresen sentimientos, garantizando frescura, calidad y un servicio inigualable.
+            </p>
+          </div>
+        </div>
+
+        <!-- Pilar 3 -->
+        <div class="swiper-slide flex justify-center">
+          <div class="bg-white rounded-2xl p-8 text-center shadow-lg max-w-sm">
+            <h3 class="flex items-center justify-center text-2xl font-semibold mb-4">
+              <span class="text-indigo-500 mr-2"></span> Nuestros Valores
+            </h3>
+            <ul class="text-gray-700 leading-relaxed list-disc list-inside space-y-2">
+              <li>Compromiso con la Calidad</li>
+              <li>Creatividad en Cada Diseño</li>
+              <li>Integridad y Confianza</li>
+              <li>Pasión por el Servicio</li>
+              <li>Puntualidad en la Entrega</li>
+              <li>Innovación Sostenible</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Navegación -->
+     
+
+      <!-- Bullets grises -->
+      <div class="swiper-pagination mt-8"></div>
+    </div>
+  </div>
+</section>
+
+
+<!-- Y Swiper JS + inicialización justo antes de </body> -->
+<script src="https://unpkg.com/swiper@9/swiper-bundle.min.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+   new Swiper('.pilares-swiper', {
+  loop: false,             // sin loop para que el “middle” sea estable
+  initialSlide: 1,         // arranca con el segundo slide centrado
+  centeredSlides: true,    // siempre centra el slide activo
+  slidesPerView: 1,        // vista por defecto: 1
+  spaceBetween: 20,        // separación mínima para móvil
+  pagination: {
+    el: '.swiper-pagination',
+    clickable: true,
+    bulletClass: 'swiper-pagination-bullet !bg-gray-300',
+    bulletActiveClass: 'swiper-pagination-bullet-active !bg-gray-600',
+    dynamicBullets: true,
+  },
+  breakpoints: {
+    640:  { slidesPerView: 1, spaceBetween: 20 },   // móvil
+    768:  { slidesPerView: 2, spaceBetween: 30 },   // tablet
+    1024: { slidesPerView: 3, spaceBetween: 40 }    // desktop
+  }
+});
+
+
+  });
+</script>
+
+  <hr class="border-t border-gray-300 ">
   <footer class="bg-white text-black font-['Libre_Baskerville'] px-6 py-12">
     <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-10 text-sm">
 
@@ -266,3 +328,4 @@ btn.addEventListener('click', () => {
       © 2025 Jose Ayrton Calderon Cruces Todos los derechos reservados. Uwu
     </div>
   </footer>
+  

@@ -71,7 +71,7 @@
                   d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2 9m5-9v9m4-9v9m4-9l2 9" />
               </svg>
             </a>
-            <a href="{{ url('/perfil') }}" class="text-black hover:text-[#D4AF37] transition duration-450">
+            <a href="{{ url('/login') }}" class="text-black hover:text-[#D4AF37] transition duration-450">
               <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                   d="M5.121 17.804A9 9 0 1118.879 6.196 9 9 0 015.12 17.804z" />

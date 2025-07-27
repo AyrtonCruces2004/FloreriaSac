@@ -14,3 +14,5 @@ Route::get('/catalogo', [HomeController::class, 'catalogo'])->name('catalogo');
 // Renderiza directamente la vista contacto/contacto.blade.php al visitar /contacto
 Route::view('/contacto', 'contacto.contacto')->name('contacto');
 Route::view('/nosotros', 'nosotros.nosotros')->name('nosotros');
+Route::view('/login', 'login.login')->name('login');
+Route::view('/register', 'register.register')->name('register');

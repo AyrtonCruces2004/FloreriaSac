@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>contacto</title>
+  <title>Login</title>
   <link rel="preconnect" href="https://fonts.bunny.net">
   <link href="https://fonts.bunny.net/css?family=instrument-sans:400,500,600" rel="stylesheet" />
   <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
@@ -81,107 +81,127 @@
       </div>
     </div>
   </header>
-  
-  <section class="bg-white">
-    <div class="max-w-full mx-auto">
-      <div class="relative w-full max-w-full mx-auto mt-0 overflow-hidden h-[600px]">
-        <div class="relative w-full h-full overflow-hidden" id="fade-carousel-2">
-          <img src="{{ asset('img/flor1.png') }}" alt="Flor 1" class="fade-slide-2 absolute inset-0 w-full h-full object-cover  opacity-100 transition-opacity duration-1500">
-          <img src="{{ asset('img/flor2.jpg') }}" alt="Flor 2" class="fade-slide-2 absolute inset-0 w-full h-full object-cover  opacity-0 transition-opacity duration-1500">
-          <img src="{{ asset('img/flor3.jpg') }}" alt="Flor 3" class="fade-slide-2 absolute inset-0 w-full h-full object-cover  opacity-0 transition-opacity duration-1500">
-        </div>
+  <section
+  class="min-h-screen bg-gradient-to-br from-purple-900 via-red-900 to-blue-800
+         flex items-center justify-center px-4"
+>
+  <!-- Tarjeta con efecto frosted-glass y transiciones -->
+  <div
+    class="group relative w-full max-w-md rounded-3xl bg-white/20 backdrop-blur-lg
+           overflow-hidden shadow-2xl
+           transform transition-all duration-500 ease-in-out
+           hover:scale-105 hover:shadow-2xl"
+  >
+    <!-- Overlay de color, con transición de opacidad -->
+    <div
+      class="absolute inset-0 bg-gradient-to-br from-purple-700/30 to-blue-500/30
+             transition-opacity duration-700 ease-in-out
+             group-hover:opacity-80"
+    ></div>
 
-        <!-- Botones indicadores -->
-        <div class="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-3 z-10">
-          <button onclick="goToFade2(0)" class="w-3 h-3 rounded-full bg-black/50 hover:bg-white transition "></button>
-          <button onclick="goToFade2(1)" class="w-3 h-3 rounded-full bg-black/50 hover:bg-white transition "></button>
-          <button onclick="goToFade2(2)" class="w-3 h-3 rounded-full bg-black/50 hover:bg-white transition "></button>
-        </div>
-      </div>
-    </div>
-  </section>
-  <script>
-    const fadeSlides2 = document.querySelectorAll('.fade-slide-2');
-    let fadeIndex2 = 0;
-
-    function showFadeSlide2(index) {
-      fadeSlides2.forEach((img, i) => {
-        img.classList.toggle('opacity-100', i === index);
-        img.classList.toggle('opacity-0', i !== index);
-      });
-    }
-
-    function goToFade2(index) {
-      fadeIndex2 = index;
-      showFadeSlide2(fadeIndex2);
-    }
-
-    setInterval(() => {
-      fadeIndex2 = (fadeIndex2 + 1) % fadeSlides2.length;
-      showFadeSlide2(fadeIndex2);
-    }, 5000);
-
-    showFadeSlide2(0);
-  </script>
-<div class="bg-black text-white text-center py-2">
-    <span class="tracking-wide uppercase text-sm ">
-        Contactate con nosotros.
-    </span>
-  </div>
-<section id="Contacto" class="py-16 bg-white text-black">
-  <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
-    <!-- TEXTO + FORMULARIO -->
-    <div>
-      <h2 class="text-3xl font-['Libre_Baskerville'] mb-4">Contáctenos</h2>
-      <p class="text-2xl font-['Libre_Baskerville'] mb-6">
-        Si tiene alguna consulta, póngase en contacto con nosotros.
-      </p>
-      <p class="mb-8 font-['Libre_Baskerville'] text-gray-700 ">
-        Llena el formulario y nos pondremos en contacto a la brevedad.
-      </p>
-      <form action="#" method="POST" class="space-y-6">
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <input
-            type="text" name="name" placeholder="Su nombre"
-            class="w-full px-4 py-3 border-2 border-black rounded-lg focus:outline-none focus:ring-2 focus:ring-black"
-            required
-          />
-          <input
-            type="email" name="email" placeholder="Su correo electrónico"
-            class="w-full px-4 py-3 border-2 border-black rounded-lg focus:outline-none focus:ring-2 focus:ring-black"
-            required
-          />
-        </div>
-        <input
-          type="text" name="subject" placeholder="Asunto"
-          class="w-full px-4 py-3 border-2 border-black rounded-lg focus:outline-none focus:ring-2 focus:ring-black"
+    <!-- Contenido -->
+    <div class="relative z-10 p-8">
+      <!-- Avatar con hover -->
+      <div class="flex justify-center mb-6">
+        <img
+          src="img/avatar-placeholder.png"
+          alt="Avatar"
+          class="w-20 h-20 rounded-full border-2 border-white/70
+                 transform transition-transform duration-500 ease-in-out
+                 hover:scale-110"
         />
-        <textarea
-          name="message" rows="5" placeholder="Mensaje"
-          class="w-full px-4 py-3 border-2 border-black rounded-lg focus:outline-none focus:ring-2 focus:ring-black"
-        ></textarea>
-        <button
-          type="submit"
-          class="inline-block bg-black text-white uppercase tracking-wider font-medium px-6 py-3 rounded-lg hover:bg-gray-800 transition font-['Libre_Baskerville'] text-sm"
-        >
-          Enviar mensaje
-        </button>
-      </form>
-    </div>
+      </div>
 
-    <!-- MAPA -->
-    <div class="w-full h-80 lg:h-full">
-      <iframe
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1564.8902956322902!2d-77.02729923824936!3d-12.03804498817459!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9105cf41e6ed1dad%3A0xb30871711a844983!2zUsOtbWFj!5e0!3m2!1ses-419!2spe!4v1753332495688!5m2!1ses-419!2spe"
-        class="w-full h-full border-0 rounded-lg shadow-lg"
-        allowfullscreen="" loading="lazy"
-      ></iframe>
+      <form method="POST" action="/login" class="space-y-6">
+        <!-- Email -->
+        <div class="relative">
+          <label for="email" class="sr-only">Email ID</label>
+          <span
+            class="absolute inset-y-0 left-0 flex items-center pl-3 text-white
+                   transform transition-transform duration-300 ease-in-out
+                   group-focus-within:scale-110"
+          >
+            <!-- Icono de sobre -->
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none"
+                 stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M3 19h18a2 2 0 002-2V8a2 2 0 00-2-2H3a2 2 0 00-2 2v9a2 2 0 002 2z"/>
+            </svg>
+          </span>
+          <input
+            id="email"
+            type="email"
+            name="email"
+            required
+            placeholder="Email ID"
+            class="w-full pl-10 pr-4 py-2 bg-transparent border-b border-white
+                   text-white placeholder-white focus:outline-none focus:border-white
+                   focus:bg-white/10 transition-colors duration-300 ease-in-out"
+          />
+        </div>
+
+        <!-- Password -->
+        <div class="relative">
+          <label for="password" class="sr-only">Password</label>
+          <span
+            class="absolute inset-y-0 left-0 flex items-center pl-3 text-white
+                   transform transition-transform duration-300 ease-in-out
+                   group-focus-within:scale-110"
+          >
+            <!-- Icono de candado -->
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none"
+                 stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M12 11c-1.654 0-3 1.346-3 3v4h6v-4c0-1.654-1.346-3-3-3zm0-8a4 4 0 00-4 4v4h8V7a4 4 0 00-4-4z"/>
+            </svg>
+          </span>
+          <input
+            id="password"
+            type="password"
+            name="password"
+            required
+            placeholder="Password"
+            class="w-full pl-10 pr-4 py-2 bg-transparent border-b border-white
+                   text-white placeholder-white focus:outline-none focus:border-white
+                   focus:bg-white/10 transition-colors duration-300 ease-in-out"
+          />
+        </div>
+
+        <!-- Remember + Forgot -->
+        <div class="flex items-center justify-between text-sm text-white">
+          <label class="flex items-center space-x-2">
+            <input
+              type="checkbox"
+              name="remember"
+              class="h-4 w-4 text-blue-400 focus:ring-blue-300 border-white
+                     transition-colors duration-300 ease-in-out"
+            />
+            <span>Remember me</span>
+          </label>
+          <a href="{{ route('register') }}" class="underline transition-colors duration-300 ease-in-out hover:text-gray-200">
+            Forgot Password?
+          </a>
+        </div>
+
+        <!-- Botón LOGIN con transform -->
+        <div>
+          <button
+            type="submit"
+            class="w-full py-2 rounded-lg text-lg font-semibold
+                   bg-gradient-to-r from-purple-500 to-blue-500
+                   hover:from-purple-600 hover:to-blue-600
+                   transform transition-all duration-300 ease-in-out
+                   hover:scale-105 active:scale-95 text-white"
+          >
+            LOGIN
+          </button>
+        </div>
+      </form>
     </div>
   </div>
 </section>
 
-<!-- SCROLL TO TOP BUTTON -->
-<button
+  <button
   id="scrollToTop"
   class="fixed bottom-6 right-6 bg-black text-white p-3 rounded-full shadow-lg
          opacity-0 pointer-events-none
@@ -266,3 +286,5 @@ btn.addEventListener('click', () => {
       © 2025 Jose Ayrton Calderon Cruces Todos los derechos reservados. Uwu
     </div>
   </footer>
+
+  

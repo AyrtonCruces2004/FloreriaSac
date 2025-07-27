@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>contacto</title>
+  <title>register</title>
   <link rel="preconnect" href="https://fonts.bunny.net">
   <link href="https://fonts.bunny.net/css?family=instrument-sans:400,500,600" rel="stylesheet" />
   <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
@@ -81,188 +81,161 @@
       </div>
     </div>
   </header>
-  
-  <section class="bg-white">
-    <div class="max-w-full mx-auto">
-      <div class="relative w-full max-w-full mx-auto mt-0 overflow-hidden h-[600px]">
-        <div class="relative w-full h-full overflow-hidden" id="fade-carousel-2">
-          <img src="{{ asset('img/flor1.png') }}" alt="Flor 1" class="fade-slide-2 absolute inset-0 w-full h-full object-cover  opacity-100 transition-opacity duration-1500">
-          <img src="{{ asset('img/flor2.jpg') }}" alt="Flor 2" class="fade-slide-2 absolute inset-0 w-full h-full object-cover  opacity-0 transition-opacity duration-1500">
-          <img src="{{ asset('img/flor3.jpg') }}" alt="Flor 3" class="fade-slide-2 absolute inset-0 w-full h-full object-cover  opacity-0 transition-opacity duration-1500">
-        </div>
+  <section
+  class="min-h-screen bg-gradient-to-br from-purple-900 via-red-900 to-blue-800
+         flex items-center justify-center px-4"
+>
+  <!-- Tarjeta frosted glass con transiciones -->
+  <div
+    class="group relative w-full max-w-md rounded-3xl bg-white/20 backdrop-blur-lg
+           overflow-hidden shadow-2xl transform transition-all duration-500 ease-in-out
+           hover:scale-105 hover:shadow-2xl"
+  >
+    <!-- Overlay de color suave -->
+    <div
+      class="absolute inset-0 bg-gradient-to-br from-purple-700/30 to-blue-500/30
+             transition-opacity duration-700 ease-in-out
+             group-hover:opacity-80"
+    ></div>
 
-        <!-- Botones indicadores -->
-        <div class="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-3 z-10">
-          <button onclick="goToFade2(0)" class="w-3 h-3 rounded-full bg-black/50 hover:bg-white transition "></button>
-          <button onclick="goToFade2(1)" class="w-3 h-3 rounded-full bg-black/50 hover:bg-white transition "></button>
-          <button onclick="goToFade2(2)" class="w-3 h-3 rounded-full bg-black/50 hover:bg-white transition "></button>
-        </div>
-      </div>
-    </div>
-  </section>
-  <script>
-    const fadeSlides2 = document.querySelectorAll('.fade-slide-2');
-    let fadeIndex2 = 0;
-
-    function showFadeSlide2(index) {
-      fadeSlides2.forEach((img, i) => {
-        img.classList.toggle('opacity-100', i === index);
-        img.classList.toggle('opacity-0', i !== index);
-      });
-    }
-
-    function goToFade2(index) {
-      fadeIndex2 = index;
-      showFadeSlide2(fadeIndex2);
-    }
-
-    setInterval(() => {
-      fadeIndex2 = (fadeIndex2 + 1) % fadeSlides2.length;
-      showFadeSlide2(fadeIndex2);
-    }, 5000);
-
-    showFadeSlide2(0);
-  </script>
-<div class="bg-black text-white text-center py-2">
-    <span class="tracking-wide uppercase text-sm ">
-        Contactate con nosotros.
-    </span>
-  </div>
-<section id="Contacto" class="py-16 bg-white text-black">
-  <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
-    <!-- TEXTO + FORMULARIO -->
-    <div>
-      <h2 class="text-3xl font-['Libre_Baskerville'] mb-4">Contáctenos</h2>
-      <p class="text-2xl font-['Libre_Baskerville'] mb-6">
-        Si tiene alguna consulta, póngase en contacto con nosotros.
-      </p>
-      <p class="mb-8 font-['Libre_Baskerville'] text-gray-700 ">
-        Llena el formulario y nos pondremos en contacto a la brevedad.
-      </p>
-      <form action="#" method="POST" class="space-y-6">
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <input
-            type="text" name="name" placeholder="Su nombre"
-            class="w-full px-4 py-3 border-2 border-black rounded-lg focus:outline-none focus:ring-2 focus:ring-black"
-            required
-          />
-          <input
-            type="email" name="email" placeholder="Su correo electrónico"
-            class="w-full px-4 py-3 border-2 border-black rounded-lg focus:outline-none focus:ring-2 focus:ring-black"
-            required
-          />
-        </div>
-        <input
-          type="text" name="subject" placeholder="Asunto"
-          class="w-full px-4 py-3 border-2 border-black rounded-lg focus:outline-none focus:ring-2 focus:ring-black"
+    <!-- Contenido -->
+    <div class="relative z-10 p-8">
+      <!-- Avatar -->
+      <div class="flex justify-center mb-6">
+        <img
+          src="img/avatar-placeholder.png"
+          alt="Avatar"
+          class="w-20 h-20 rounded-full border-2 border-white/70
+                 transform transition-transform duration-500 ease-in-out
+                 hover:scale-110"
         />
-        <textarea
-          name="message" rows="5" placeholder="Mensaje"
-          class="w-full px-4 py-3 border-2 border-black rounded-lg focus:outline-none focus:ring-2 focus:ring-black"
-        ></textarea>
-        <button
-          type="submit"
-          class="inline-block bg-black text-white uppercase tracking-wider font-medium px-6 py-3 rounded-lg hover:bg-gray-800 transition font-['Libre_Baskerville'] text-sm"
-        >
-          Enviar mensaje
-        </button>
-      </form>
-    </div>
+      </div>
 
-    <!-- MAPA -->
-    <div class="w-full h-80 lg:h-full">
-      <iframe
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1564.8902956322902!2d-77.02729923824936!3d-12.03804498817459!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9105cf41e6ed1dad%3A0xb30871711a844983!2zUsOtbWFj!5e0!3m2!1ses-419!2spe!4v1753332495688!5m2!1ses-419!2spe"
-        class="w-full h-full border-0 rounded-lg shadow-lg"
-        allowfullscreen="" loading="lazy"
-      ></iframe>
+      <form method="POST" action="/register" class="space-y-6">
+        <!-- Name -->
+        <div class="relative">
+          <label for="name" class="sr-only">Full Name</label>
+          <span
+            class="absolute inset-y-0 left-0 flex items-center pl-3 text-white
+                   transform transition-transform duration-300 ease-in-out
+                   group-focus-within:scale-110"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none"
+                 stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M5.121 17.804A13.937 13.937 0 0112 15c2.637 0 5.113.816 7.121 2.196M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+            </svg>
+          </span>
+          <input
+            id="name"
+            type="text"
+            name="name"
+            required
+            placeholder="Full Name"
+            class="w-full pl-10 pr-4 py-2 bg-transparent border-b border-white
+                   text-white placeholder-white focus:outline-none focus:border-white
+                   focus:bg-white/10 transition-colors duration-300 ease-in-out"
+          />
+        </div>
+
+        <!-- Email -->
+        <div class="relative">
+          <label for="email" class="sr-only">Email</label>
+          <span
+            class="absolute inset-y-0 left-0 flex items-center pl-3 text-white
+                   transform transition-transform duration-300 ease-in-out
+                   group-focus-within:scale-110"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none"
+                 stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M3 19h18a2 2 0 002-2V8a2 2 0 00-2-2H3a2 2 0 00-2 2v9a2 2 0 002 2z"/>
+            </svg>
+          </span>
+          <input
+            id="email"
+            type="email"
+            name="email"
+            required
+            placeholder="Email Address"
+            class="w-full pl-10 pr-4 py-2 bg-transparent border-b border-white
+                   text-white placeholder-white focus:outline-none focus:border-white
+                   focus:bg-white/10 transition-colors duration-300 ease-in-out"
+          />
+        </div>
+
+        <!-- Password -->
+        <div class="relative">
+          <label for="password" class="sr-only">Password</label>
+          <span
+            class="absolute inset-y-0 left-0 flex items-center pl-3 text-white
+                   transform transition-transform duration-300 ease-in-out
+                   group-focus-within:scale-110"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none"
+                 stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M12 11c-1.654 0-3 1.346-3 3v4h6v-4c0-1.654-1.346-3-3-3zm0-8a4 4 0 00-4 4v4h8V7a4 4 0 00-4-4z"/>
+            </svg>
+          </span>
+          <input
+            id="password"
+            type="password"
+            name="password"
+            required
+            placeholder="Password"
+            class="w-full pl-10 pr-4 py-2 bg-transparent border-b border-white
+                   text-white placeholder-white focus:outline-none focus:border-white
+                   focus:bg-white/10 transition-colors duration-300 ease-in-out"
+          />
+        </div>
+
+        <!-- Confirm Password -->
+        <div class="relative">
+          <label for="password_confirmation" class="sr-only">Confirm Password</label>
+          <span
+            class="absolute inset-y-0 left-0 flex items-center pl-3 text-white
+                   transform transition-transform duration-300 ease-in-out
+                   group-focus-within:scale-110"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none"
+                 stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M5 13l4 4L19 7"/>
+            </svg>
+          </span>
+          <input
+            id="password_confirmation"
+            type="password"
+            name="password_confirmation"
+            required
+            placeholder="Confirm Password"
+            class="w-full pl-10 pr-4 py-2 bg-transparent border-b border-white
+                   text-white placeholder-white focus:outline-none focus:border-white
+                   focus:bg-white/10 transition-colors duration-300 ease-in-out"
+          />
+        </div>
+
+        <!-- Botón REGISTER con hover y focus -->
+        <div>
+          <button
+            type="submit"
+            class="w-full py-2 rounded-lg text-lg font-semibold
+                   bg-gradient-to-r from-purple-500 to-blue-500
+                   hover:from-purple-600 hover:to-blue-600
+                   transform transition-all duration-300 ease-in-out
+                   hover:scale-105 active:scale-95 text-white"
+          >
+            REGISTER
+          </button>
+        </div>
+
+        <!-- Link a Login -->
+        <p class="text-sm text-center text-white/80">
+          Already have an account?
+          <a href="/login" class="underline hover:text-white">Login</a>
+        </p>
+      </form>
     </div>
   </div>
 </section>
-
-<!-- SCROLL TO TOP BUTTON -->
-<button
-  id="scrollToTop"
-  class="fixed bottom-6 right-6 bg-black text-white p-3 rounded-full shadow-lg
-         opacity-0 pointer-events-none
-         transition-all duration-300 ease-in-out transform
-         hover:scale-110 hover:bg-gray-800
-         active:scale-125 focus:outline-none focus:ring-2 focus:ring-white/50"
-  aria-label="Subir arriba"
->
-  <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
-       viewBox="0 0 24 24" stroke="currentColor">
-    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-          d="M5 15l7-7 7 7" />
-  </svg>
-</button>
-
-<script>
-  // SCROLL TO TOP
-const btn = document.getElementById('scrollToTop');
-window.addEventListener('scroll', () => {
-  if (window.scrollY > 300) {
-    btn.classList.remove('opacity-0', 'pointer-events-none');
-    btn.classList.add('opacity-100');
-  } else {
-    btn.classList.add('opacity-0', 'pointer-events-none');
-    btn.classList.remove('opacity-100');
-  }
-});
-btn.addEventListener('click', () => {
-  window.scrollTo({ top: 0, behavior: 'smooth' });
-});
-
-</script>
-<hr class="border-t border-gray-300 ">
-  <footer class="bg-white text-black font-['Libre_Baskerville'] px-6 py-12">
-    <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-10 text-sm">
-
-      <!-- INFORMACIÓN -->
-      <div>
-        <h3 class="uppercase font-medium tracking-widest mb-4">Información</h3>
-        <ul class="space-y-2">
-          <li><a href="#" class="hover:underline">Política de Envíos</a></li>
-          <li><a href="#" class="hover:underline">Política de Privacidad</a></li>
-          <li><a href="#" class="hover:underline">Política de Cambios y Devoluciones</a></li>
-          <li><a href="#" class="hover:underline">Tarifario de Delivery</a></li>
-          <li><a href="#" class="hover:underline">Preguntas Frecuentes</a></li>
-        </ul>
-        <img src="/ruta/libro-reclamaciones.png" alt="Libro de Reclamaciones" class="mt-6 w-20">
-      </div>
-
-      <!-- CONTACTO -->
-      <div class="space-y-3">
-        <h3 class="uppercase font-medium tracking-widest mb-4">Contacto</h3>
-        <p><strong>Mail:</strong> josesaaca@gmail.com</p>
-        <p><strong>Teléfono:</strong> +51 940910751</p>
-        <p><strong>Dirección:</strong> Lima, Lima, Rimac</p>
-        <p><strong>Horarios:</strong> Lun-Sáb 8am a 5pm / Dom 8am a 4pm</p>
-      </div>
-
-      <!-- REGÍSTRATE -->
-      <div>
-        <h3 class="uppercase font-medium tracking-widest mb-4">Regístrate</h3>
-        <p class="mb-2">Recibe novedades, ofertas especiales, e increíbles sorteos.</p>
-        <div class="flex items-center border-b border-black py-2">
-          <input type="email" placeholder="Suscríbete a nuestra lista de correo" class="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none">
-          <svg class="w-6 h-6 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 12H8m0 0l4-4m-4 4l4 4" />
-          </svg>
-        </div>
-        <label class="flex items-center mt-3 text-xs">
-          <input type="checkbox" class="mr-2">
-          Acepto la <a href="#" class="underline ml-1">Política de Privacidad</a>
-        </label>
-
-        <div class="flex space-x-4 mt-6">
-          <a href="#" class="text-xl"><i class="fab fa-instagram"></i></a>
-          <a href="#" class="text-xl"><i class="fab fa-facebook"></i></a>
-        </div>
-      </div>
-    </div>
-
-    <div class="text-center mt-12 text-xs">
-      © 2025 Jose Ayrton Calderon Cruces Todos los derechos reservados. Uwu
-    </div>
-  </footer>

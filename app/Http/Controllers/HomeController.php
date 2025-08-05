@@ -196,4 +196,65 @@ class HomeController extends Controller
             'related' => $related,
         ]);
     }
+    public function showCart()
+    {
+        $cart = session('cart', []); // ['slug' => cantidad, …]
+        $items = collect($cart)->map(function($qty, $slug) {
+            $prod = collect($this->products)->firstWhere('slug', $slug);
+            if (!$prod) return null;
+            return array_merge($prod, ['quantity' => $qty]);
+        })->filter()->all();
+
+        return view('carrito.carrito', ['items' => $items]);
+
+    }
+
+    // Añadir al carrito
+    public function addToCart($slug)
+    {
+        $cart = session('cart', []);
+        $cart[$slug] = ($cart[$slug] ?? 0) + 1;
+        session(['cart' => $cart]);
+        return redirect()->back();
+    }
+
+    // Eliminar del carrito
+    public function removeFromCart($slug)
+    {
+        $cart = session('cart', []);
+        unset($cart[$slug]);
+        session(['cart' => $cart]);
+        return redirect()->route('cart.show');
+    }
+
+    // Actualizar cantidad
+    public function updateCart(Request $req, $slug)
+    {
+        $qty = max(1, (int)$req->input('quantity', 1));
+        $cart = session('cart', []);
+        if (isset($cart[$slug])) {
+            $cart[$slug] = $qty;
+            session(['cart' => $cart]);
+        }
+        return redirect()->route('cart.show');
+    }
+    public function contacto()
+{
+    // 1) Saca el carrito de la sesión
+    $cart = session('cart', []); // ['slug' => qty, ...]
+
+    // 2) Transforma cada slug en el producto completo + qty
+    $items = collect($cart)
+        ->map(function($qty, $slug) {
+            $prod = collect($this->products)->firstWhere('slug', $slug);
+            return $prod
+                ? array_merge($prod, ['quantity' => $qty])
+                : null;
+        })
+        ->filter()
+        ->all();
+
+    // 3) Devuelve la vista pasándole $items
+    return view('contacto.contacto', compact('items'));
+}
 }

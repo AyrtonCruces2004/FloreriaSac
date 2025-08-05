@@ -55,35 +55,137 @@
       <div class="flex items-center justify-between h-16">
         <a href="{{ url('/') }}" class="flex items-center space-x-2">
           <div class="w-8 h-8 bg-black rounded-full"></div>
-          <span class="text-black font-['Libre_Baskerville'] hover:text-[#D4AF37] transition duration-450">Florería</span>
+          <span class="text-black hover:text-[#D4AF37] transition duration-450">Florería</span>
         </a>
-        <nav class="flex items-center gap-16 font-normal">
+        <nav class="flex items-center gap-16 text-xs">
           <div class="flex gap-12 text-xs">
-            <a href="{{ url('/') }}" class="text-black hover:text-[#D4AF37] uppercase tracking-wide font-['Libre_Baskerville'] transition duration-450">Inicio</a>
-            <a href="{{ url('/catalogo') }}" class="text-black hover:text-[#D4AF37] uppercase tracking-wide font-['Libre_Baskerville'] transition duration-450">Catálogo</a>
-            <a href="{{ url('/contacto') }}" class="text-black hover:text-[#D4AF37] uppercase tracking-wide font-['Libre_Baskerville'] transition duration-450">Contacto</a>
-            <a href="{{ route('nosotros') }}" class="text-black hover:text-[#D4AF37] uppercase tracking-wide font-['Libre_Baskerville'] transition duration-450">Sobre Nosotros</a>
+          <a href="{{ url('/') }}"         class="text-black hover:text-[#D4AF37] uppercase tracking-wide font-['Libre_Baskerville'] transition duration-450">Inicio</a>
+          <a href="{{ route('catalogo') }}"class="text-black hover:text-[#D4AF37] uppercase tracking-wide font-['Libre_Baskerville'] transition duration-450">Catálogo</a>
+          <a href="{{ route('contacto') }}"class="text-black hover:text-[#D4AF37] uppercase tracking-wide font-['Libre_Baskerville'] transition duration-450">Contacto</a>
+          <a href="{{ route('nosotros') }}"class="text-black hover:text-[#D4AF37] uppercase tracking-wide font-['Libre_Baskerville'] transition duration-450">Sobre Nosotros</a>
+        
           </div>
-          <div class="flex gap-10">
-            <a href="{{ url('/carrito') }}" class="text-black hover:text-[#D4AF37] transition duration-450">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                  d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2 9m5-9v9m4-9v9m4-9l2 9" />
-              </svg>
-            </a>
-            <a href="{{ url('/login') }}" class="text-black hover:text-[#D4AF37] transition duration-450">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                  d="M5.121 17.804A9 9 0 1118.879 6.196 9 9 0 015.12 17.804z" />
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                  d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-              </svg>
-            </a>
-          </div>
-        </nav>
+        <div class="flex gap-10">
+          {{-- CARRITO COMO BOTÓN --}}
+          <button id="cartButton" type="button"
+                  class="flex items-center text-black hover:text-[#D4AF37] transition duration-450">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" fill="none"
+                 viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2 9
+                       m5-9v9m4-9v9m4-9l2 9" />
+            </svg>
+            <span class="text-sm">({{ count(session('cart', [])) }})</span>
+          </button>
+          {{-- LOGIN --}}
+          <a href="{{ route('login') }}" class="text-black hover:text-[#D4AF37] transition duration-450">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none"
+                 viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M5.121 17.804A9 9 0 1118.879 6.196 9 9 0 015.12 17.804z" />
+              <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+            </svg>
+          </a>
+        </div>
+      </nav>
       </div>
     </div>
   </header>
+
+  {{-- OVERLAY DEL CARRITO --}}
+  <div id="cartOverlay"
+       class="fixed inset-0 bg-black/50 hidden transition-opacity duration-300 z-30">
+  </div>
+
+  {{-- PANEL DEL CARRITO --}}
+  <aside id="cartPanel"
+         class="fixed inset-y-0 right-0 w-screen max-w-sm bg-gray-100 border-l border-gray-600
+                transform translate-x-full transition-transform duration-300 z-40 overflow-auto p-6"
+         role="dialog" aria-modal="true">
+    <button id="closeCart" class="absolute top-4 right-4 text-gray-600 hover:scale-110">
+      ✕<span class="sr-only">Cerrar carrito</span>
+    </button>
+    <h2 class="text-2xl font-semibold mb-4">Tu Carrito ({{ count(session('cart', [])) }})</h2>
+
+    @php
+      $items = collect(session('cart', []))
+                ->map(fn($qty,$slug) => array_merge(
+                   collect((new \App\Http\Controllers\HomeController)->products)
+                     ->firstWhere('slug',$slug), ['quantity'=>$qty]
+                 ))->filter()->all();
+    @endphp
+
+    @if(empty($items))
+      <p class="text-gray-600">Tu carrito está vacío.</p>
+    @else
+      <ul class="space-y-4 mb-6">
+        @foreach($items as $item)
+          <li class="flex items-center gap-4">
+            <img src="{{ asset($item['image']) }}" alt="{{ $item['name'] }}"
+                 class="w-16 h-16 object-cover rounded-sm" />
+            <div class="flex-1">
+              <h3 class="text-sm font-semibold">{{ $item['name'] }}</h3>
+              <p class="text-gray-600">S/{{ $item['price'] }}</p>
+              <form action="{{ route('cart.update', $item['slug']) }}"
+                    method="POST" class="flex items-center gap-2 mt-1">
+                @csrf
+                <input type="number" name="quantity" value="{{ $item['quantity'] }}"
+                       min="1" class="w-16 border rounded px-2 py-1 text-sm" />
+                <button type="submit" class="text-blue-600 hover:underline text-sm">
+                  Actualizar
+                </button>
+              </form>
+            </div>
+            <form action="{{ route('cart.remove', $item['slug']) }}" method="POST">
+              @csrf
+              <button type="submit" class="text-red-600 hover:underline text-sm">
+                Eliminar
+              </button>
+            </form>
+          </li>
+        @endforeach
+      </ul>
+      <div class="space-y-4 text-center">
+        <a href="{{ route('cart.show') }}"
+           class="block border px-5 py-3 text-gray-600 hover:ring-1 hover:ring-gray-400 transition">
+          Ver mi carrito
+        </a>
+        <a href="/checkout"
+           class="block bg-gray-700 px-5 py-3 text-white hover:bg-gray-600 transition rounded">
+          Checkout
+        </a>
+        <button id="continueShopping"
+                class="inline-block text-gray-500 underline hover:text-gray-600 transition">
+          Seguir comprando
+        </button>
+      </div>
+    @endif
+  </aside>
+
+  
+
+  {{-- SCRIPT PARA TOGGLE --}}
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const btn     = document.getElementById('cartButton');
+      const overlay = document.getElementById('cartOverlay');
+      const panel   = document.getElementById('cartPanel');
+      const close   = document.getElementById('closeCart');
+      const cont    = document.getElementById('continueShopping');
+
+      btn.addEventListener('click', () => {
+        overlay.classList.remove('hidden');
+        panel.classList.remove('translate-x-full');
+      });
+      [close, overlay, cont].forEach(el => {
+        if (el) el.addEventListener('click', () => {
+          overlay.classList.add('hidden');
+          panel.classList.add('translate-x-full');
+        });
+      });
+    });
+  </script>
 
   <!-- CONTENEDOR PRINCIPAL -->
   <div class="flex flex-1">

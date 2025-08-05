@@ -95,7 +95,7 @@
     <!-- Overlay de color, con transición de opacidad -->
     <div
       class="absolute inset-0 bg-gradient-to-br from-purple-700/30 to-blue-500/30
-             transition-opacity duration-700 ease-in-out
+             transition-opacity duration-800 ease-in-out
              group-hover:opacity-80"
     ></div>
 
@@ -205,7 +205,7 @@
   id="scrollToTop"
   class="fixed bottom-6 right-6 bg-black text-white p-3 rounded-full shadow-lg
          opacity-0 pointer-events-none
-         transition-all duration-300 ease-in-out transform
+         transition-all duration-1000 ease-in-out transform
          hover:scale-110 hover:bg-gray-800
          active:scale-125 focus:outline-none focus:ring-2 focus:ring-white/50"
   aria-label="Subir arriba"
